@@ -3,8 +3,11 @@ import { Mail, CheckCircle2, AlertCircle } from "lucide-react";
 
 // Replace YOUR_FORM_ID with the ID Formspree gives you after you create a
 // free form at https://formspree.io — takes about a minute, no backend needed.
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/habibachand6",;
-const CONTACT_EMAIL = "habibachand6@gmail.com",
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/habibachand6";
+const CONTACT_EMAIL = "habibachand6@gmail.com";
+const CONTACT_SECONDARY_EMAIL = "contact@aisquadx.com";
+const CONTACT_WEBSITE = "https://aisquadx.com";
+const CONTACT_WHATSAPP_CHANNEL = "https://whatsapp.com/channel/0029Vb80wwsKLaHiravuLc3q";
 
 const SERVICE_OPTIONS = [
   "App development",
@@ -50,15 +53,41 @@ export default function Contact() {
             Tell me what you're building
           </h2>
           <p className="mt-4 text-white/60 leading-relaxed max-w-sm">
-            Fill in the form and you'll hear back by email — usually within one
-            business day.
+            AI agents, digital content, monitoring & automation — message me and I’ll
+            reply within 1 business day.
           </p>
-          <a
-            href={`mailto:${CONTACT_EMAIL}`}
-            className="inline-flex items-center gap-2 mt-7 text-sm text-white/70 hover:text-white transition-colors focus-ring rounded"
-          >
-            <Mail size={16} /> {CONTACT_EMAIL}
-          </a>
+
+          <div className="mt-7 space-y-3">
+            <a
+              href={`mailto:${CONTACT_EMAIL}`}
+              className="inline-flex items-center gap-2 text-sm text-white/75 hover:text-white transition-colors focus-ring rounded"
+            >
+              <Mail size={16} /> {CONTACT_EMAIL}
+            </a>
+            <a
+              href="mailto:contact@aisquadx.com"
+              className="inline-flex items-center gap-2 text-sm text-white/75 hover:text-white transition-colors focus-ring rounded"
+            >
+              <Mail size={16} /> contact@aisquadx.com
+            </a>
+            <a
+              href="https://aisquadx.com"
+              target="_blank"
+              rel="noreferrer"
+              className="block text-sm text-white/75 hover:text-white transition-colors focus-ring rounded"
+            >
+              https://aisquadx.com
+            </a>
+            <a
+              href="https://whatsapp.com/channel/0029Vb80wwsKLaHiravuLc3q"
+              target="_blank"
+              rel="noreferrer"
+              className="block text-sm text-white/75 hover:text-white transition-colors focus-ring rounded"
+            >
+              WhatsApp Channel
+            </a>
+          </div>
+
         </div>
 
         <form onSubmit={handleSubmit} className="bg-white/5 border border-white/10 rounded-xl p-7 md:p-8 space-y-5">

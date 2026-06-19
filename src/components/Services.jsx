@@ -36,13 +36,16 @@ export default function Services() {
     <section id="services" className="bg-mist py-24 md:py-28">
       <div className="max-w-6xl mx-auto px-6">
         <div className="max-w-xl mb-14">
-          <p className="font-mono text-xs text-cobalt tracking-widest mb-3">CATALOG</p>
+          <div className="inline-flex items-center gap-2 bg-white/70 border border-line rounded-full px-3 py-1.5">
+            <span className="font-mono text-[11px] text-cobalt tracking-widest">CATALOG</span>
+            <span className="font-mono text-[11px] text-slate/60">AI • Content • Monitoring</span>
+          </div>
           <h2 className="font-display text-3xl md:text-4xl font-semibold text-ink tracking-tight">
-            Four ways to ship faster
+            AI-powered services for fast, real growth
           </h2>
           <p className="mt-4 text-slate leading-relaxed">
-            Every item below is delivered by the same person who builds it — pick what
-            you need, or combine a product with a service.
+            AI agents, digital content, monitoring & automation — delivered end-to-end so your
+            business ships faster and runs smarter.
           </p>
         </div>
 
@@ -61,6 +64,14 @@ export default function Services() {
               <h3 className="font-display text-xl font-semibold text-ink mt-5">
                 {title}
               </h3>
+              <div className="mt-2.5 flex flex-wrap gap-2">
+                <span className="font-mono text-[11px] text-slate/70 border border-line rounded-full px-2 py-1">
+                  Delivery in days
+                </span>
+                <span className="font-mono text-[11px] text-slate/70 border border-line rounded-full px-2 py-1">
+                  Performance-first
+                </span>
+              </div>
               <p className="text-slate text-sm leading-relaxed mt-2.5">{desc}</p>
               <div className="flex items-center justify-between mt-6 pt-5 border-t border-line">
                 <span className="font-mono text-xs text-navy">{price}</span>
