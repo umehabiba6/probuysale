@@ -6,10 +6,19 @@ export default function Footer() {
           <span className="font-mono text-amber text-sm">{"{ }"}</span>
           <span className="font-display text-white/80 text-sm">ProBuySale</span>
         </div>
-        <p className="font-mono text-xs text-white/35">
-          © {new Date().getFullYear()} ProBuySale. All rights reserved.
-        </p>
+        <div className="flex items-center gap-6">
+          <a
+            href="/privacy-policy"
+            className="font-mono text-xs text-white/35 hover:text-white focus-ring rounded"
+          >
+            Privacy Policy
+          </a>
+          <p className="font-mono text-xs text-white/35">
+            © {new Date().getFullYear()} ProBuySale. All rights reserved.
+          </p>
+        </div>
       </div>
     </footer>
   );
 }
+
