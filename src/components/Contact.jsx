@@ -3,7 +3,7 @@ import { Mail, CheckCircle2, AlertCircle } from "lucide-react";
 
 // Replace YOUR_FORM_ID with the ID Formspree gives you after you create a
 // free form at https://formspree.io — takes about a minute, no backend needed.
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/habibachand6",;
 const CONTACT_EMAIL = "habibachand6@gmail.com",
 
 const SERVICE_OPTIONS = [
