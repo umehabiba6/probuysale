@@ -9,6 +9,7 @@ const CONTACT_SECONDARY_EMAIL = "contact@aisquadx.com";
 const CONTACT_WEBSITE = "https://aisquadx.com";
 const CONTACT_WHATSAPP_CHANNEL = "https://whatsapp.com/channel/0029Vb80wwsKLaHiravuLc3q";
 
+
 const SERVICE_OPTIONS = [
   "App development",
   "Web development",
@@ -65,27 +66,28 @@ export default function Contact() {
               <Mail size={16} /> {CONTACT_EMAIL}
             </a>
             <a
-              href="mailto:contact@aisquadx.com"
+              href={`mailto:${CONTACT_SECONDARY_EMAIL}`}
               className="inline-flex items-center gap-2 text-sm text-white/75 hover:text-white transition-colors focus-ring rounded"
             >
-              <Mail size={16} /> contact@aisquadx.com
+              <Mail size={16} /> {CONTACT_SECONDARY_EMAIL}
             </a>
             <a
-              href="https://aisquadx.com"
+              href={CONTACT_WEBSITE}
               target="_blank"
               rel="noreferrer"
               className="block text-sm text-white/75 hover:text-white transition-colors focus-ring rounded"
             >
-              https://aisquadx.com
+              {CONTACT_WEBSITE}
             </a>
             <a
-              href="https://whatsapp.com/channel/0029Vb80wwsKLaHiravuLc3q"
+              href={CONTACT_WHATSAPP_CHANNEL}
               target="_blank"
               rel="noreferrer"
               className="block text-sm text-white/75 hover:text-white transition-colors focus-ring rounded"
             >
               WhatsApp Channel
             </a>
+
           </div>
 
         </div>

@@ -53,7 +53,7 @@ export default function Services() {
           {ITEMS.map(({ tag, icon: Icon, title, desc, price }) => (
             <div
               key={tag}
-              className="group bg-white border border-line rounded-xl p-7 hover:border-cobalt/40 hover:shadow-[0_20px_40px_-20px_rgba(36,86,219,0.25)] transition-all"
+              className="group bg-white/70 backdrop-blur border border-line rounded-xl p-7 hover:border-cobalt/40 hover:shadow-[0_20px_40px_-20px_rgba(36,86,219,0.25)] transition-all motion-reduce:hover:scale-[1] hover:scale-[1.02]"
             >
               <div className="flex items-center justify-between">
                 <span className="font-mono text-[11px] text-slate tracking-wide">

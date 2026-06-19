@@ -15,14 +15,16 @@ export default function Hero() {
             DIGITAL PRODUCTS &amp; DEV SERVICES
           </p>
           <h1 className="font-display text-4xl md:text-5xl font-semibold text-white leading-[1.1] tracking-tight">
-            Built once by a developer.
+            Built Once. Delivered by Many.
             <br />
-            Sold to one client at a time.
+            
+            <span className="text-amber">High-performance</span> digital products.
           </h1>
+
           <p className="mt-6 text-white/65 text-base md:text-lg leading-relaxed max-w-md">
-            ProBuySale is a single-seller storefront for mobile apps, websites, AI
-            integrations and ready-made UI kits — no agency layer, no markup, just the
-            person who builds it.
+           ProBuySale is a single‑seller storefront for mobile apps, websites, AI integrations, and ready‑made UI kits — built directly by the developer, not through an agency. No markup, no middle layer — just authentic, high‑performance builds engineered to scale.
+
+We also provide secure hosting services and operate with a large, talented team capable of delivering complete projects within days — combining speed, precision, and creativity to help businesses launch faster and grow smarter.
           </p>
           <div className="mt-9 flex flex-wrap gap-4">
             <a
