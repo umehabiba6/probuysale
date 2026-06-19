@@ -22,10 +22,9 @@ export default function Hero() {
           </h1>
 
           <p className="mt-6 text-white/65 text-base md:text-lg leading-relaxed max-w-md">
-           ProBuySale is a single‑seller storefront for mobile apps, websites, AI integrations, and ready‑made UI kits — built directly by the developer, not through an agency. No markup, no middle layer — just authentic, high‑performance builds engineered to scale.
-
-We also provide secure hosting services and operate with a large, talented team capable of delivering complete projects within days — combining speed, precision, and creativity to help businesses launch faster and grow smarter.
+            ProBuySale mobile apps, websites, AI integrations, aur ready‑made UI kits—<span className="text-white">all in one place</span>. Built with precision, no middle layer: direct developer delivery, performance-first.
           </p>
+
           <div className="mt-9 flex flex-wrap gap-4">
             <a
               href="#services"

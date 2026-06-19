@@ -40,7 +40,10 @@ export default function Approach() {
               <h3 className="font-display text-lg font-semibold text-ink mt-3">
                 {s.title}
               </h3>
-              <p className="text-slate text-sm leading-relaxed mt-2">{s.desc}</p>
+              <p className="text-slate text-sm leading-relaxed mt-2">
+                {s.desc}
+              </p>
+
               {i < STEPS.length - 1 && (
                 <span className="hidden md:block absolute top-6 -right-4 w-px h-10 bg-line" />
               )}
