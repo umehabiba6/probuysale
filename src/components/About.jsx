@@ -15,18 +15,18 @@ export default function About() {
         <div>
           <p className="font-mono text-xs text-amber tracking-widest mb-3">ABOUT</p>
           <h2 className="font-display text-3xl md:text-4xl font-semibold text-white tracking-tight">
-            Great services, built with great tech. I build apps that scale, and AI agents that perform.
+            Great services, built with great tech.We build apps that scale, and AI agents that perform.
           </h2>
         </div>
 
         <div>
           {/* Edit this paragraph with your own background before launch */}
           <p className="text-white/70 leading-relaxed">
-            I’m a BSIT student (2022–2026) and a full‑stack Flutter developer who builds apps that scale — powered by Firebase and Supabase, engineered to perform. I design and deploy custom AI agents for established companies, turning automation into a competitive edge for their business. Beyond development, I’m building real monetization systems — not side projects, but digital products designed to generate sustainable revenue.
+            We are a dedicated team of full‑stack Flutter developers and IT professionals (BSIT 2022–2026) who build apps that scale — powered by Firebase and Supabase, engineered to perform. Together, we design and deploy custom AI agents for established companies, turning automation into a competitive edge for their business.
 
-I work with recognized brands to strengthen their digital presence, delivering everything end‑to‑end: development, AI integration, and graphic design — one developer, one source, zero compromises.
+Beyond development, we focus on real monetization systems — not side projects, but digital products designed to generate sustainable revenue. Our team collaborates with recognized brands to strengthen their digital presence, delivering everything end‑to‑end: development, AI integration, hosting, and graphic design — one team, one source, zero compromises.
 
-We also provide hosting services and have a dedicated team capable of delivering projects within days, ensuring speed without sacrificing quality.
+With a big and talented workforce, we ensure projects are delivered within days, combining speed, precision, and creativity to help businesses launch faster and grow smarter.
           </p>
           <div className="flex flex-wrap gap-2.5 mt-7">
             {STACK.map((t) => (
