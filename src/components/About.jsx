@@ -5,6 +5,7 @@ const STACK = [
   "Python",
   "PyTorch",
   "Claude API",
+  "Hosting",
 ];
 
 export default function About() {
@@ -21,7 +22,11 @@ export default function About() {
         <div>
           {/* Edit this paragraph with your own background before launch */}
           <p className="text-white/70 leading-relaxed">
-            I'm a BSIT student (2022–2026) and a full-stack Flutter developer who builds apps that scale — powered by Firebase and Supabase, engineered to perform. I design and deploy custom AI agents for established companies, turning automation into a competitive edge for their business. Beyond development, I'm building real monetization systems — not side projects, but digital products designed to generate sustainable revenue. I work with recognized brands to strengthen their digital presence, delivering everything end-to-end: development, AI integration, and graphic design — one developer, one source, zero compromises.
+            I’m a BSIT student (2022–2026) and a full‑stack Flutter developer who builds apps that scale — powered by Firebase and Supabase, engineered to perform. I design and deploy custom AI agents for established companies, turning automation into a competitive edge for their business. Beyond development, I’m building real monetization systems — not side projects, but digital products designed to generate sustainable revenue.
+
+I work with recognized brands to strengthen their digital presence, delivering everything end‑to‑end: development, AI integration, and graphic design — one developer, one source, zero compromises.
+
+We also provide hosting services and have a dedicated team capable of delivering projects within days, ensuring speed without sacrificing quality.
           </p>
           <div className="flex flex-wrap gap-2.5 mt-7">
             {STACK.map((t) => (
