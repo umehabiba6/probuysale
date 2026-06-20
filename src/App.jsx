@@ -38,7 +38,7 @@ export default function App() {
         {/* Ad above Contact */}
         <section className="py-10 px-6 bg-mist">
           <div className="max-w-6xl mx-auto">
-            <AdUnit slotId="0000000000" className="flex justify-center" />
+            <AdUnit slotId="ca-pub-6087131991867287" className="flex justify-center" />
           </div>
         </section>
 
@@ -50,7 +50,7 @@ export default function App() {
       {/* Footer ad (non-intrusive) */}
       <section className="px-6 pb-14" aria-label="Advertisement">
         <div className="max-w-6xl mx-auto">
-          <AdUnit slotId="0000000000" className="flex justify-center" />
+          <AdUnit slotId="ca-pub-6087131991867287" className="flex justify-center" />
         </div>
       </section>
     </div>
