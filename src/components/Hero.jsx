@@ -17,9 +17,19 @@ export default function Hero() {
           <h1 className="font-display text-4xl md:text-5xl font-semibold text-white leading-[1.1] tracking-tight">
             Built Once. Delivered by Many.
             <br />
-            
+
             <span className="text-amber">High-performance</span> digital products.
           </h1>
+
+          <div className="mt-6">
+            <img
+              src="/images/Copilot_20260619_164008.png"
+              alt="ProBuySale"
+              className="w-full max-w-md rounded-xl border border-white/10 shadow-[0_30px_60px_-20px_rgba(11,19,32,0.6)]"
+              loading="lazy"
+            />
+          </div>
+
 
           <p className="mt-6 text-white/65 text-base md:text-lg leading-relaxed max-w-md">
               aur ready‑made UI kits—<span className="text-white">all in one place</span>. Built with precision, no middle layer: direct developer delivery, performance-first.

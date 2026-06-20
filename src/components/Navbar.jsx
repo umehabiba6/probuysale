@@ -27,7 +27,11 @@ export default function Navbar() {
     >
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <a href="#top" className="flex items-center gap-2 focus-ring rounded">
-          <span className="font-mono text-amber text-lg">{"{ }"}</span>
+          <img
+            src="/images/Copilot_20260619_164008.png"
+            alt="ProBuySale"
+            className="h-9 w-9 object-contain"
+          />
           <span className="font-display font-semibold text-white text-lg tracking-tight">
             ProBuySale
           </span>
