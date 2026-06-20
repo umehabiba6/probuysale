@@ -5,8 +5,6 @@ import { Mail, CheckCircle2, AlertCircle } from "lucide-react";
 // free form at https://formspree.io — takes about a minute, no backend needed.
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/habibachand6";
 const CONTACT_EMAIL = "habibachand6@gmail.com";
-const CONTACT_SECONDARY_EMAIL = "contact@aisquadx.com";
-const CONTACT_WEBSITE = "https://aisquadx.com";
 const CONTACT_WHATSAPP_CHANNEL = "https://whatsapp.com/channel/0029Vb80wwsKLaHiravuLc3q";
 
 
