@@ -34,9 +34,16 @@ export default function Approach() {
           {STEPS.map((s, i) => (
             <div
               key={s.n}
-              className="relative pl-0 rounded-xl border border-line bg-white/60 backdrop-blur p-6 hover:bg-white/80 transition-colors group"
+              className="relative pl-0 rounded-xl border border-line bg-white/60 backdrop-blur p-6 hover:bg-white/80 transition-colors group overflow-hidden"
             >
-              <span className="font-mono text-3xl text-cobalt/25">{s.n}</span>
+              <div
+                className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                aria-hidden="true"
+              >
+                <div className="absolute left-1/2 -translate-x-1/2 top-2 h-24 w-24 rounded-full bg-cobalt/15 blur-2xl" />
+              </div>
+
+              <span className="relative font-mono text-3xl text-cobalt/25">{s.n}</span>
               <h3 className="font-display text-lg font-semibold text-ink mt-3">
                 {s.title}
               </h3>

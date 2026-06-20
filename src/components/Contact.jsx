@@ -60,16 +60,25 @@ export default function Contact() {
 
           <div className="mt-7 space-y-3">
             <a
-              href={`mailto:${CONTACT_EMAIL}`}
+              href="https://www.linkedin.com/in/ume-habiba-133560397/"
+              target="_blank"
+              rel="noreferrer"
               className="inline-flex items-center gap-2 text-sm text-white/75 hover:text-white transition-colors focus-ring rounded"
             >
-              <Mail size={16} /> {CONTACT_EMAIL}
+              <Mail size={16} /> LinkedIn: {CONTACT_EMAIL}
             </a>
             <a
-              href={`mailto:${CONTACT_SECONDARY_EMAIL}`}
-              className="inline-flex items-center gap-2 text-sm text-white/75 hover:text-white transition-colors focus-ring rounded"
+              href={CONTACT_WEBSITE}
+              target="_blank"
+              rel="noreferrer"
+              className="block text-sm text-white/75 hover:text-white transition-colors focus-ring rounded"
             >
-              <Mail size={16} /> {CONTACT_SECONDARY_EMAIL}
+              <span className="inline-flex items-center gap-2">
+                <Mail size={16} /> aisquadx.com
+              </span>
+              <span className="block text-white/50 text-xs mt-1">
+                here you can use 60+ free AI tools
+              </span>
             </a>
             <a
               href={CONTACT_WEBSITE}

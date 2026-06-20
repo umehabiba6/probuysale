@@ -22,7 +22,7 @@ export default function Hero() {
           </h1>
 
           <p className="mt-6 text-white/65 text-base md:text-lg leading-relaxed max-w-md">
-            ProBuySale mobile apps, websites, AI integrations, aur ready‑made UI kits—<span className="text-white">all in one place</span>. Built with precision, no middle layer: direct developer delivery, performance-first.
+              aur ready‑made UI kits—<span className="text-white">all in one place</span>. Built with precision, no middle layer: direct developer delivery, performance-first.
           </p>
 
           <div className="mt-9 flex flex-wrap gap-4">

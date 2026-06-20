@@ -53,9 +53,17 @@ export default function Services() {
           {ITEMS.map(({ tag, icon: Icon, title, desc, price }) => (
             <div
               key={tag}
-              className="group bg-white/70 backdrop-blur border border-line rounded-xl p-7 hover:border-cobalt/40 hover:shadow-[0_20px_40px_-20px_rgba(36,86,219,0.25)] transition-all motion-reduce:hover:scale-[1] hover:scale-[1.02]"
+              className="group relative overflow-hidden bg-white/70 backdrop-blur border border-line rounded-xl p-7 hover:border-cobalt/40 hover:shadow-[0_20px_40px_-20px_rgba(36,86,219,0.25)] transition-all motion-reduce:hover:scale-[1] hover:scale-[1.02]"
             >
-              <div className="flex items-center justify-between">
+              <div
+                className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                aria-hidden="true"
+              >
+                <div className="absolute -top-24 -right-24 h-56 w-56 rounded-full bg-cobalt/20 blur-2xl" />
+                <div className="absolute -bottom-24 -left-24 h-56 w-56 rounded-full bg-amber/15 blur-2xl" />
+              </div>
+
+              <div className="relative flex items-center justify-between">
                 <span className="font-mono text-[11px] text-slate tracking-wide">
                   {tag}
                 </span>
