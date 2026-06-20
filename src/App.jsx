@@ -1,12 +1,16 @@
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Services from "./components/Services";
+import Shop from "./components/Shop";
 import Approach from "./components/Approach";
 import About from "./components/About";
+import Blog from "./components/Blog";
+import LeadMagnet from "./components/LeadMagnet";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import AdUnit from "./components/AdUnit";
 import PrivacyPolicy from "./components/PrivacyPolicy";
+
 
 export default function App() {
   // Simple route handling without extra deps.
@@ -24,8 +28,10 @@ export default function App() {
       <main>
         <Hero />
         <Services />
+        <Shop />
 
         {/* Ad between Services and Approach */}
+
         <section className="py-10 px-6 bg-mist">
           <div className="max-w-6xl mx-auto">
             <AdUnit slotId="ca-pub-6087131991867287" className="flex justify-center" />
@@ -34,14 +40,17 @@ export default function App() {
 
         <Approach />
         <About />
+        <Blog />
 
         {/* Ad above Contact */}
+
         <section className="py-10 px-6 bg-mist">
           <div className="max-w-6xl mx-auto">
             <AdUnit slotId="ca-pub-6087131991867287" className="flex justify-center" />
           </div>
         </section>
 
+        <LeadMagnet />
         <Contact />
       </main>
 

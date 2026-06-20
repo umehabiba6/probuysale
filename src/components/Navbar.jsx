@@ -3,10 +3,13 @@ import { Menu, X } from "lucide-react";
 
 const LINKS = [
   { href: "#services", label: "Services" },
+  { href: "#shop", label: "Shop" },
   { href: "#work", label: "Approach" },
   { href: "#about", label: "About" },
+  { href: "#blog", label: "Blog" },
   { href: "#contact", label: "Contact" },
 ];
+
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
