@@ -60,34 +60,12 @@ export default function Contact() {
 
           <div className="mt-7 space-y-3">
             <a
-              href="https://www.linkedin.com/in/ume-habiba-133560397/"
-              target="_blank"
-              rel="noreferrer"
+              href={`mailto:${CONTACT_EMAIL}`}
               className="inline-flex items-center gap-2 text-sm text-white/75 hover:text-white transition-colors focus-ring rounded"
             >
-              <Mail size={16} /> LinkedIn: {CONTACT_EMAIL}
+              <Mail size={16} /> Email: {CONTACT_EMAIL}
             </a>
-            <a
-              href={CONTACT_WEBSITE}
-              target="_blank"
-              rel="noreferrer"
-              className="block text-sm text-white/75 hover:text-white transition-colors focus-ring rounded"
-            >
-              <span className="inline-flex items-center gap-2">
-                <Mail size={16} /> aisquadx.com
-              </span>
-              <span className="block text-white/50 text-xs mt-1">
-                here you can use 60+ free AI tools
-              </span>
-            </a>
-            <a
-              href={CONTACT_WEBSITE}
-              target="_blank"
-              rel="noreferrer"
-              className="block text-sm text-white/75 hover:text-white transition-colors focus-ring rounded"
-            >
-              {CONTACT_WEBSITE}
-            </a>
+            {/* Removed unrelated third-party website + marketing line */}
             <a
               href={CONTACT_WHATSAPP_CHANNEL}
               target="_blank"
@@ -157,9 +135,9 @@ export default function Contact() {
             </p>
           )}
           {status === "error" && (
-            <p className="flex items-center gap-2 text-sm text-red-400">
-              <AlertCircle size={16} /> Couldn't send. Email {CONTACT_EMAIL} directly instead.
-            </p>
+              <p className="flex items-center gap-2 text-sm text-red-400">
+                <AlertCircle size={16} /> Couldn't send. Email {CONTACT_EMAIL} directly instead.
+              </p>
           )}
         </form>
       </div>

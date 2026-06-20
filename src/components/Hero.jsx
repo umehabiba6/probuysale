@@ -21,18 +21,17 @@ export default function Hero() {
             <span className="text-amber">High-performance</span> digital products.
           </h1>
 
-          <div className="mt-6">
+          <div className="mt-6 flex items-center">
             <img
               src="/images/Copilot_20260619_164008.png"
               alt="ProBuySale"
-              className="w-full max-w-md rounded-xl border border-white/10 shadow-[0_30px_60px_-20px_rgba(11,19,32,0.6)]"
+              className="w-auto max-w-[120px] rounded-xl border border-white/10 shadow-[0_30px_60px_-20px_rgba(11,19,32,0.6)]"
               loading="lazy"
             />
           </div>
 
-
           <p className="mt-6 text-white/65 text-base md:text-lg leading-relaxed max-w-md">
-              aur ready‑made UI kits—<span className="text-white">all in one place</span>. Built with precision, no middle layer: direct developer delivery, performance-first.
+            and ready‑made UI kits—<span className="text-white">all in one place</span>. Built with precision, no middle layer: direct developer delivery, performance-first.
           </p>
 
           <div className="mt-9 flex flex-wrap gap-4">

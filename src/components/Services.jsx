@@ -6,28 +6,28 @@ const ITEMS = [
     icon: Smartphone,
     title: "Mobile apps",
     desc: "Native-feel Android & iOS apps built in Flutter or React Native, from a single codebase you can maintain.",
-    price: "depend on requirements",
+    price: "Custom quote",
   },
   {
     tag: "service/web-development",
     icon: Globe,
     title: "Websites & dashboards",
     desc: "React storefronts, portals and admin dashboards — fast to load, easy to extend, deployed on your own domain.",
-    price: "not fixed, depends on requirements",
+    price: "Custom quote",
   },
   {
     tag: "service/ai-ml-integration",
     icon: Sparkles,
     title: "AI & ML integration",
     desc: "Chat assistants, RAG search and fine-tuned models wired into your product, not just a demo notebook.",
-    price: "depend on requirements",
+    price: "Custom quote",
   },
   {
     tag: "product/ui-kits",
     icon: PackageOpen,
     title: "UI kits & templates",
     desc: "Ready-made Flutter and React UI kits you can license and customize today — no build queue to wait for.",
-    price: "depends on requirements",
+    price: "Custom quote",
   },
 ];
 
