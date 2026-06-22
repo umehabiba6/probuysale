@@ -1,10 +1,9 @@
 # TODO
 
-- [x] Navbar me `{ }` ko remove karke logo image add karna
-- [x] Footer me `{ }` ko logo/image se replace karna
-- [x] Services section cards par animation + colors add karna
-- [x] Approach section steps par animation + colors add karna
-- [x] Contact section me LinkedIn + aisquadx.com links add karna
-- [x] Contact form error message me gmail directly show karna
-- [ ] Deploy check on Vercel: latest deployment verify
+- [ ] Update `src/index.css` global placeholder + input/select/textarea text color
+- [ ] Fix placeholder readability override issues in `src/components/LeadMagnet.jsx` (remove `text-white` from input)
+- [ ] Create `src/pages/HireTeam.jsx` page per spec (route `/hire-team`, Contact-style form, success state, responsive)
+- [ ] Update `src/App.jsx` to include `/hire-team` route
+- [ ] Update `src/components/Navbar.jsx` to add "Hire a Team" link after "Marketplace"
+- [ ] Final check: ensure no disallowed `text-white`/placeholder white patterns remain in the specified files
 

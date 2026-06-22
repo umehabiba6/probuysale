@@ -59,7 +59,8 @@ export default function LeadMagnet() {
                 required
                 name="email"
                 type="email"
-                className="form-input text-white"
+                className="form-input-ink form-input"
+
                 placeholder="you@example.com"
               />
               <div className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-white/50">

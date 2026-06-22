@@ -77,13 +77,26 @@ body {
   border-radius: 8px;
   padding: 0.65rem 0.85rem;
   font-size: 0.875rem;
-  color: #ffffff;
   transition: border-color 0.2s ease;
 }
 
+/* Default placeholder/input styling for form-input */
+/* Default placeholder/input styling for form-input */
 .form-input::placeholder {
+  /* keep component-level styling, but global placeholder override will enforce accessibility */
   color: rgba(255, 255, 255, 0.35);
 }
+
+/* Signup requirement: placeholder should be black/ink on mist (light) background */
+.form-input-ink {
+  color: var(--color-ink);
+}
+
+.form-input-ink::placeholder {
+  color: rgba(11, 19, 32, 0.55);
+}
+
+
 
 .form-input:focus {
   outline: none;
@@ -93,3 +106,14 @@ body {
 .form-input option {
   color: #0b1320;
 }
+
+/* Global placeholder/text readability */
+::placeholder {
+  color: #5b6b82 !important;
+  opacity: 1 !important;
+}
+
+input, textarea, select {
+  color: #0b1320 !important;
+}
+

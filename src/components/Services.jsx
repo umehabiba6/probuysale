@@ -27,8 +27,7 @@ const ITEMS = [
     icon: PackageOpen,
     title: "UI kits & templates",
     desc: "Ready-made Flutter and React UI kits you can license and customize today — no build queue to wait for.",
-    price: "Custom quote",
-  },
+    price: "Custom quote",  },
 ];
 
 export default function Services() {

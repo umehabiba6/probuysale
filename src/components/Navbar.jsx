@@ -3,15 +3,17 @@ import { Menu, X } from "lucide-react";
 
 const LINKS = [
   { href: "#services", label: "Services" },
-  { href: "#shop", label: "Shop" },
+
   { href: "#work", label: "Approach" },
   { href: "#about", label: "About" },
   { href: "#blog", label: "Blog" },
   { href: "#contact", label: "Contact" },
+  { href: "/marketplace", label: "Marketplace" },
+  { href: "/hire-team", label: "Hire a Team" },
 ];
 
-
 export default function Navbar() {
+
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -51,12 +53,13 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="#contact"
+            href="/sell/signup"
             className="text-sm font-medium bg-cobalt hover:bg-cobalt-light text-white px-4 py-2 rounded-md transition-colors focus-ring"
           >
-            Start a project
+            Sell on ProBuySale
           </a>
         </nav>
+
 
         <button
           className="md:hidden text-white focus-ring rounded p-1"

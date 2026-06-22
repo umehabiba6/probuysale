@@ -1,7 +1,7 @@
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Services from "./components/Services";
-import Shop from "./components/Shop";
+
 import Approach from "./components/Approach";
 import About from "./components/About";
 import Blog from "./components/Blog";
@@ -11,27 +11,27 @@ import Footer from "./components/Footer";
 import AdUnit from "./components/AdUnit";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 
+import { Routes, Route, Navigate } from "react-router-dom";
+import useAnonAuth from "./hooks/useAnonAuth";
+import BootstrapDiagnostics from "./BootstrapDiagnostics";
 
-export default function App() {
-  // Simple route handling without extra deps.
-  // - /privacy-policy shows the privacy policy page
-  const path = typeof window !== "undefined" ? window.location.pathname : "";
-  const isPrivacy = path === "/privacy-policy";
-
-  if (isPrivacy) {
-    return <PrivacyPolicy />;
-  }
-
+import Marketplace from "./pages/Marketplace";
+import ListingDetail from "./pages/ListingDetail";
+import SellerSignup from "./pages/SellerSignup";
+import SellerLogin from "./pages/SellerLogin";
+import SellerDashboard from "./pages/SellerDashboard";
+import SellerProtectedRoute from "./components/SellerProtectedRoute";
+import HireTeam from "./pages/HireTeam";
+function Homepage() {
   return (
     <div className="min-h-screen">
       <Navbar />
       <main>
         <Hero />
         <Services />
-        <Shop />
+
 
         {/* Ad between Services and Approach */}
-
         <section className="py-10 px-6 bg-mist">
           <div className="max-w-6xl mx-auto">
             <AdUnit slotId="ca-pub-6087131991867287" className="flex justify-center" />
@@ -43,7 +43,6 @@ export default function App() {
         <Blog />
 
         {/* Ad above Contact */}
-
         <section className="py-10 px-6 bg-mist">
           <div className="max-w-6xl mx-auto">
             <AdUnit slotId="ca-pub-6087131991867287" className="flex justify-center" />
@@ -63,6 +62,48 @@ export default function App() {
         </div>
       </section>
     </div>
+  );
+}
+
+export default function App() {
+  // Silent anonymous auth for all visitors (buyers).
+  // Provides stable uid for chat security.
+  useAnonAuth();
+
+  return (
+    <>
+      <BootstrapDiagnostics />
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+
+        {/* Marketplace */}
+        <Route path="/marketplace" element={<Marketplace />} />
+        <Route path="/marketplace/:listingId" element={<ListingDetail />} />
+        <Route path="/hire-team" element={<HireTeam />} />
+
+        {/* Seller */}
+        <Route path="/sell/signup" element={<SellerSignup />} />
+        <Route path="/sell/login" element={<SellerLogin />} />
+        <Route
+          path="/sell/dashboard"
+          element={
+            <SellerProtectedRoute>
+              <SellerDashboard />
+            </SellerProtectedRoute>
+          }
+        />
+
+        {/* Blog post */}
+        <Route path="/blog/:slug" element={<div />} />
+
+        {/* Admin */}
+        <Route path="/admin/login" element={<div />} />
+        <Route path="/admin" element={<div />} />
+
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </>
   );
 }
 

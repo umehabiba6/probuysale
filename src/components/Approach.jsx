@@ -23,7 +23,7 @@ const STEPS = [
 
 export default function Approach() {
   return (
-    <section id="work" className="bg-white py-24 md:py-28 border-t border-line">
+    <section id="work" className="bg-white py-24 md:pt-28 border-t border-line">
       <div className="max-w-6xl mx-auto px-6">
         <p className="font-mono text-xs text-cobalt tracking-widest mb-3">PROCESS</p>
         <h2 className="font-display text-3xl md:text-4xl font-semibold text-ink tracking-tight max-w-lg">
