@@ -72,7 +72,7 @@ export default function HireTeam() {
   }
 
   return (
-    <div className="bg-mist pt-20 md:pt-24">
+    <div className="bg-mist pt-16 md:pt-24">
       {/* HERO */}
       <section className="bg-ink py-20 md:py-24 border-t border-white/10">
         <div className="max-w-6xl mx-auto px-6">
