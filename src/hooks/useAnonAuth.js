@@ -16,7 +16,7 @@ export default function useAnonAuth() {
       } else {
         setUid(user.uid);
       }
-    } catch (e) {
+    } catch {
       // In case anonymous sign-in is blocked, still allow app to render.
       setUid(null);
     } finally {

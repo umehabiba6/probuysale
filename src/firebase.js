@@ -17,7 +17,7 @@ const app = initializeApp(firebaseConfig);
 // Analytics works in browser; safe to wrap in try/catch for environments without it.
 try {
   getAnalytics(app);
-} catch (e) {
+} catch {
   // no-op
 }
 

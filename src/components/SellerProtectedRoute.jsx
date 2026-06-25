@@ -27,8 +27,9 @@ export default function SellerProtectedRoute({ children }) {
         if (!mounted) return;
         setAllowed(false);
       } finally {
-        if (!mounted) return;
-        setLoading(false);
+        if (mounted) {
+          setLoading(false);
+        }
       }
     });
 

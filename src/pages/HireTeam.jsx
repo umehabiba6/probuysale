@@ -1,10 +1,8 @@
 import { useState } from "react";
-import { Mail, CheckCircle2, AlertCircle } from "lucide-react";
-import { Link } from "react-router-dom";
+import { CheckCircle2, AlertCircle } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import {
   Smartphone,
-
   Laptop,
   Brain,
   Store,

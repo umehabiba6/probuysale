@@ -1,8 +1,4 @@
-import React, { useEffect, useState } from "react";
-
-function formatMissingEnv(key) {
-  return `${key} is missing/empty`;
-}
+import { useEffect, useState } from "react";
 
 export default function BootstrapDiagnostics() {
   const [info, setInfo] = useState(null);
@@ -22,9 +18,12 @@ export default function BootstrapDiagnostics() {
       return !v || String(v).trim() === "";
     });
 
-    setInfo({
-      hasMissing: missing.length > 0,
-      missing,
+    // Avoid sync setState inside effect body (lint rule). 
+    queueMicrotask(() => {
+      setInfo({
+        hasMissing: missing.length > 0,
+        missing,
+      });
     });
   }, []);
 

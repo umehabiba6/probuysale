@@ -1,7 +1,9 @@
-import { useEffect, useMemo, useState } from "react";
-import { collection, getDocs, onSnapshot, orderBy, query, where } from "firebase/firestore";
-import { db, auth } from "../firebase";
-import { onAuthStateChanged } from "firebase/auth";
+import { useEffect, useState } from "react";
+import { collection, onSnapshot, query, where } from "firebase/firestore";
+import { db } from "../firebase";
+
+
+
 
 export default function SellerMessagesTab({ uid }) {
   const [conversations, setConversations] = useState([]);

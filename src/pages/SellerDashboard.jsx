@@ -1,7 +1,7 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { onAuthStateChanged, signOut } from "firebase/auth";
-import { collection, deleteDoc, doc, onSnapshot, orderBy, query, serverTimestamp, setDoc, updateDoc, where } from "firebase/firestore";
-import { auth, db } from "../firebase";
+import { auth } from "../firebase";
+
 import SellerListingsTab from "./SellerListingsTab";
 import SellerMessagesTab from "./SellerMessagesTab";
 

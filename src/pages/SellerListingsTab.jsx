@@ -1,7 +1,7 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { collection, deleteDoc, doc, getDoc, onSnapshot, orderBy, query, serverTimestamp, setDoc, updateDoc, where } from "firebase/firestore";
 import { db } from "../firebase";
-import { Pencil, Plus, Trash } from "lucide-react";
+import { Pencil, Trash } from "lucide-react";
 
 const CATEGORIES = [
   "Flutter / Mobile Apps",

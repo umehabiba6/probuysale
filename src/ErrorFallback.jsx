@@ -1,4 +1,4 @@
-import React from "react";
+import "react";
 
 export default function ErrorFallback({ error, reset }) {
   return (
