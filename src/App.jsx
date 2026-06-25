@@ -11,6 +11,7 @@ import Footer from "./components/Footer";
 import AdUnit from "./components/AdUnit";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import SellerProtectedRoute from "./components/SellerProtectedRoute";
+import AdminProtectedRoute from "./components/AdminProtectedRoute";
 
 import { Routes, Route, Navigate } from "react-router-dom";
 import useAnonAuth from "./hooks/useAnonAuth";
@@ -22,6 +23,8 @@ import SellerSignup from "./pages/SellerSignup";
 import SellerLogin from "./pages/SellerLogin";
 import SellerDashboard from "./pages/SellerDashboard";
 import HireTeam from "./pages/HireTeam";
+import AdminLogin from "./pages/AdminLogin";
+import AdminDashboard from "./pages/AdminDashboard";
 
 import { Helmet } from "react-helmet-async";
 
@@ -108,8 +111,16 @@ export default function App() {
         <Route path="/blog/:slug" element={<div />} />
 
         {/* Admin */}
-        <Route path="/admin/login" element={<div />} />
-        <Route path="/admin" element={<div />} />
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route
+          path="/admin"
+          element={
+            <AdminProtectedRoute>
+              <AdminDashboard />
+            </AdminProtectedRoute>
+          }
+        />
+
 
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
