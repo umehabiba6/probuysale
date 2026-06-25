@@ -3,7 +3,21 @@ import { collection, deleteDoc, doc, getDoc, onSnapshot, orderBy, query, serverT
 import { db } from "../firebase";
 import { Pencil, Plus, Trash } from "lucide-react";
 
-const CATEGORIES = ["UI Kits", "Ebooks", "Apps/Tools", "Courses", "Services", "Other"];
+const CATEGORIES = [
+  "Flutter / Mobile Apps",
+  "React / Web Development",
+  "AI & ML Services",
+  "UI Kits & Templates",
+  "Flutter Ebooks",
+  "Python Ebooks",
+  "C++ Ebooks",
+  "English Learning Ebooks",
+  "Kids Ebooks",
+  "Graphic Design",
+  "WordPress & Shopify",
+  "Video & Animation",
+  "Other Digital Products",
+];
 
 export default function SellerListingsTab({ uid }) {
   const [sellerName, setSellerName] = useState("");

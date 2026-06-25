@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
-Sitemap: 
+Disallow: /admin
+Disallow: /admin/login
+Disallow: /sell/dashboard
+Sitemap: https://www.probuysale.com/sitemap.xml
+
 

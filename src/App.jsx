@@ -10,6 +10,7 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import AdUnit from "./components/AdUnit";
 import PrivacyPolicy from "./components/PrivacyPolicy";
+import SellerProtectedRoute from "./components/SellerProtectedRoute";
 
 import { Routes, Route, Navigate } from "react-router-dom";
 import useAnonAuth from "./hooks/useAnonAuth";
@@ -20,16 +21,25 @@ import ListingDetail from "./pages/ListingDetail";
 import SellerSignup from "./pages/SellerSignup";
 import SellerLogin from "./pages/SellerLogin";
 import SellerDashboard from "./pages/SellerDashboard";
-import SellerProtectedRoute from "./components/SellerProtectedRoute";
 import HireTeam from "./pages/HireTeam";
+
+import { Helmet } from "react-helmet-async";
+
 function Homepage() {
   return (
     <div className="min-h-screen">
+      <Helmet>
+        <title>ProBuySale — Buy & Sell Digital Products | Hire Dev Teams</title>
+        <meta
+          name="description"
+          content="ProBuySale is a digital marketplace to buy and sell Flutter ebooks, Python guides, kids books, English learning resources, UI kits, React templates and AI tools. Also hire development teams."
+        />
+      </Helmet>
+
       <Navbar />
       <main>
         <Hero />
         <Services />
-
 
         {/* Ad between Services and Approach */}
         <section className="py-10 px-6 bg-mist">

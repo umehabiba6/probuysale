@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
+import { Helmet } from "react-helmet-async";
 
 export default function SellerLogin() {
   const nav = useNavigate();
@@ -26,7 +27,12 @@ export default function SellerLogin() {
   }
 
   return (
-    <section className="bg-mist pt-20 md:pt-24 pb-16 border-t border-line">
+    <>
+      <Helmet>
+        <title>Seller Login — ProBuySale</title>
+        <meta name="description" content="Login to manage your ProBuySale seller account, listings, and messages." />
+      </Helmet>
+      <section className="bg-mist pt-20 md:pt-24 pb-16 border-t border-line">
       <div className="max-w-xl mx-auto px-6">
         <div className="bg-white/70 backdrop-blur border border-line rounded-xl p-7">
           <p className="font-mono text-xs text-cobalt tracking-widest mb-4">SELL ON PROBUYSALE</p>
@@ -61,6 +67,7 @@ export default function SellerLogin() {
         </div>
       </div>
     </section>
+    </>
   );
 }
 

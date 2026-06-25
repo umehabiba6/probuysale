@@ -3,15 +3,24 @@ import { Link } from "react-router-dom";
 import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import { db } from "../firebase";
 import { ArrowUpRight } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 
 const CATEGORIES = [
   "All",
-  "UI Kits",
-  "Ebooks",
-  "Apps/Tools",
-  "Courses",
-  "Services",
-  "Other",
+  "Flutter / Mobile Apps",
+
+  "React / Web Development",
+  "AI & ML Services",
+  "UI Kits & Templates",
+  "Flutter Ebooks",
+  "Python Ebooks",
+  "C++ Ebooks",
+  "English Learning Ebooks",
+  "Kids Ebooks",
+  "Graphic Design",
+  "WordPress & Shopify",
+  "Video & Animation",
+  "Other Digital Products",
 ];
 
 function formatCategoryTag(category) {
@@ -54,8 +63,17 @@ export default function Marketplace() {
   }, [listings, category]);
 
   return (
-    <section className="bg-mist pt-20 md:pt-24 pb-16 border-t border-line">
+    <>
+      <Helmet>
+        <title>Digital Products Marketplace — ProBuySale</title>
+        <meta
+          name="description"
+          content="Browse Flutter ebooks, Python guides, C++ tutorials, kids ebooks, English learning books, UI kits and digital services from independent sellers worldwide."
+        />
+      </Helmet>
+      <section className="bg-mist pt-20 md:pt-24 pb-16 border-t border-line">
       <div className="max-w-6xl mx-auto px-6">
+
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10">
           <div className="max-w-2xl">
             <p className="font-mono text-xs text-cobalt tracking-widest mb-3">MARKETPLACE</p>
@@ -143,7 +161,9 @@ export default function Marketplace() {
           </div>
         )}
       </div>
-    </section>
+      </section>
+    </>
+
   );
 }
 

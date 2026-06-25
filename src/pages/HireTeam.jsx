@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Mail, CheckCircle2, AlertCircle } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import {
   Smartphone,
+
   Laptop,
   Brain,
   Store,
@@ -72,7 +74,15 @@ export default function HireTeam() {
   }
 
   return (
-    <div className="bg-mist pt-16 md:pt-24">
+    <>
+      <Helmet>
+        <title>Hire a Development Team — ProBuySale</title>
+        <meta
+          name="description"
+          content="Need a Flutter, React, or AI development team? ProBuySale matches you with vetted teams and manages delivery."
+        />
+      </Helmet>
+      <div className="bg-mist pt-16 md:pt-24">
       {/* HERO */}
       <section className="bg-ink py-20 md:py-24 border-t border-white/10">
         <div className="max-w-6xl mx-auto px-6">
@@ -297,7 +307,8 @@ export default function HireTeam() {
 
       {/* Small bottom spacer to avoid overlap */}
       <section className="h-10" aria-hidden="true" />
-    </div>
+      </div>
+    </>
   );
 }
 

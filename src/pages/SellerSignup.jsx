@@ -3,15 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { auth, db } from "../firebase";
-
-const CATEGORIES = [
-  "UI Kits",
-  "Ebooks",
-  "Apps/Tools",
-  "Courses",
-  "Services",
-  "Other",
-];
+import { Helmet } from "react-helmet-async";
 
 export default function SellerSignup() {
   const nav = useNavigate();
@@ -52,7 +44,15 @@ export default function SellerSignup() {
   }
 
   return (
-    <section className="bg-mist pt-20 md:pt-24 pb-16 border-t border-line">
+    <>
+      <Helmet>
+        <title>Sell Your Digital Products Free — ProBuySale</title>
+        <meta
+          name="description"
+          content="List your Flutter ebooks, Python guides, kids books, UI kits or any digital product for free on ProBuySale marketplace."
+        />
+      </Helmet>
+      <section className="bg-mist pt-20 md:pt-24 pb-16 border-t border-line">
       <div className="max-w-xl mx-auto px-6">
         <div className="bg-white/70 backdrop-blur border border-line rounded-xl p-7">
           <p className="font-mono text-xs text-cobalt tracking-widest mb-4">SELL ON PROBUYSALE</p>
@@ -96,7 +96,8 @@ export default function SellerSignup() {
           </p>
         </div>
       </div>
-    </section>
+      </section>
+    </>
   );
 }
 
