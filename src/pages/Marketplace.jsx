@@ -100,8 +100,10 @@ export default function Marketplace() {
           content="Browse Flutter ebooks, Python guides, C++ tutorials, kids ebooks, English learning books, UI kits and digital services from independent sellers worldwide."
         />
       </Helmet>
-      <section className="bg-mist pt-20 md:pt-24 pb-16 border-t border-line">
+      <section className="bg-mist pb-16 border-t border-line">
       <div className="max-w-6xl mx-auto px-6">
+
+
 
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10">
           <div className="max-w-2xl">
