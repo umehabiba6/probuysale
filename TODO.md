@@ -1,9 +1,11 @@
 # TODO
+- [ ] Update `src/App.jsx` so `/` route renders `Marketplace` (instead of `Homepage`).
+- [x] Enhance `src/pages/Marketplace.jsx` with:
+  - [x] Search input (title/description/shopName)
+  - [x] Sort toggle (Newest / Price low-high / Price high-low)
+  - [x] Keep existing category filter
+  - [x] Show result count
 
-- [ ] Update `src/index.css` global placeholder + input/select/textarea text color
-- [ ] Fix placeholder readability override issues in `src/components/LeadMagnet.jsx` (remove `text-white` from input)
-- [ ] Create `src/pages/HireTeam.jsx` page per spec (route `/hire-team`, Contact-style form, success state, responsive)
-- [ ] Update `src/App.jsx` to include `/hire-team` route
-- [ ] Update `src/components/Navbar.jsx` to add "Hire a Team" link after "Marketplace"
-- [ ] Final check: ensure no disallowed `text-white`/placeholder white patterns remain in the specified files
+- [x] Run dev/build to verify compilation and behavior.
+
 

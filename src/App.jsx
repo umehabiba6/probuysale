@@ -87,8 +87,9 @@ export default function App() {
     <>
       <BootstrapDiagnostics />
       <Routes>
-        <Route path="/" element={<Homepage />} />
+        <Route path="/" element={<Marketplace />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+
 
         {/* Marketplace */}
         <Route path="/marketplace" element={<Marketplace />} />
