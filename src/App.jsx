@@ -2,6 +2,7 @@ import Navbar from "./components/Navbar";
 import Marketplace from "./pages/Marketplace";
 
 import PrivacyPolicy from "./components/PrivacyPolicy";
+
 import SellerProtectedRoute from "./components/SellerProtectedRoute";
 import AdminProtectedRoute from "./components/AdminProtectedRoute";
 
@@ -9,8 +10,8 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import useAnonAuth from "./hooks/useAnonAuth";
 import BootstrapDiagnostics from "./BootstrapDiagnostics";
 
-import Marketplace from "./pages/Marketplace";
 import ListingDetail from "./pages/ListingDetail";
+
 import SellerSignup from "./pages/SellerSignup";
 import SellerLogin from "./pages/SellerLogin";
 import SellerDashboard from "./pages/SellerDashboard";
