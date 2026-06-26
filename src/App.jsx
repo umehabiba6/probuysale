@@ -1,14 +1,6 @@
 import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import Services from "./components/Services";
+import Marketplace from "./pages/Marketplace";
 
-import Approach from "./components/Approach";
-import About from "./components/About";
-import Blog from "./components/Blog";
-import LeadMagnet from "./components/LeadMagnet";
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
-import AdUnit from "./components/AdUnit";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import SellerProtectedRoute from "./components/SellerProtectedRoute";
 import AdminProtectedRoute from "./components/AdminProtectedRoute";
@@ -41,8 +33,8 @@ function Homepage() {
 
       <Navbar />
       <main>
-        <Hero />
-        <Services />
+        <Marketplace />
+
 
         {/* Ad between Services and Approach */}
         <section className="py-10 px-6 bg-mist">
