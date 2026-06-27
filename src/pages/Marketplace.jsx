@@ -8,16 +8,15 @@ import { Helmet } from "react-helmet-async";
 
 const CATEGORIES = [
   "All",
-  "Flutter / Mobile Apps",
-
-  "React / Web Development",
-  "AI & ML Services",
   "UI Kits & Templates",
   "Flutter Ebooks",
   "Python Ebooks",
   "C++ Ebooks",
   "English Learning Ebooks",
   "Kids Ebooks",
+  "Flutter / Mobile Apps",
+  "React / Web Development",
+  "AI & ML Services",
   "Graphic Design",
   "WordPress & Shopify",
   "Video & Animation",

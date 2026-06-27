@@ -2,18 +2,12 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 
 const LINKS = [
-  { href: "#services", label: "Services" },
-
-  { href: "#work", label: "Approach" },
+  { href: "#products", label: "Books" },
   { href: "#about", label: "About" },
-  { href: "#blog", label: "Blog" },
   { href: "#contact", label: "Contact" },
-  { href: "/marketplace", label: "Marketplace" },
-  { href: "/hire-team", label: "Hire a Team" },
 ];
 
 export default function Navbar() {
-
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -39,10 +33,18 @@ export default function Navbar() {
           />
           <span className="font-display font-semibold text-white text-lg tracking-tight">
             ProBuySale
+            <span className="text-amber">&nbsp;</span>
+
           </span>
         </a>
 
         <nav className="hidden md:flex items-center gap-8">
+          <a
+            href="#top"
+            className="text-sm text-white/70 hover:text-white transition-colors focus-ring rounded"
+          >
+            Home
+          </a>
           {LINKS.map((l) => (
             <a
               key={l.href}
@@ -53,10 +55,16 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="/sell/signup"
+            href="/hire-team"
+            className="text-sm text-white/70 hover:text-white transition-colors focus-ring rounded"
+          >
+            Hire a Team
+          </a>
+          <a
+            href="#products"
             className="text-sm font-medium bg-cobalt hover:bg-cobalt-light text-white px-4 py-2 rounded-md transition-colors focus-ring"
           >
-            Sell on ProBuySale
+            Browse Books
           </a>
         </nav>
 
@@ -72,6 +80,13 @@ export default function Navbar() {
 
       {open && (
         <div className="md:hidden bg-ink border-t border-white/10 px-6 py-4 flex flex-col gap-4">
+          <a
+            href="#top"
+            onClick={() => setOpen(false)}
+            className="text-white/80 text-sm"
+          >
+            Home
+          </a>
           {LINKS.map((l) => (
             <a
               key={l.href}
@@ -83,14 +98,23 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="#contact"
+            href="/hire-team"
+            onClick={() => setOpen(false)}
+            className="text-white/80 text-sm"
+          >
+            Hire a Team
+          </a>
+          <a
+            href="#products"
             onClick={() => setOpen(false)}
             className="text-sm font-medium bg-cobalt text-white px-4 py-2 rounded-md text-center"
           >
-            Start a project
+            Browse Books
           </a>
         </div>
       )}
+
     </header>
   );
 }
+
