@@ -103,7 +103,8 @@ function ProductCard({ product }) {
   );
 }
 
-export default function Products() {
+export default function Products({ variant = "full", limit } = {}) {
+
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
   const [active, setActive] = useState("All");
@@ -133,8 +134,20 @@ export default function Products() {
 
   const filtered = useMemo(() => {
     if (active === "All") return products;
-    return products.filter((p) => p.category === active || (active === "Programming" && String(p.category || "").includes("Programming")));
+    return products.filter(
+      (p) =>
+        p.category === active ||
+        (active === "Programming" && String(p.category || "").includes("Programming"))
+    );
   }, [active, products]);
+
+  const visibleProducts = useMemo(() => {
+    if (variant === "home") {
+      return typeof limit === "number" ? filtered.slice(0, limit) : filtered.slice(0, 8);
+    }
+    return filtered;
+  }, [filtered, variant, limit]);
+
 
   return (
     <section id="products" className="bg-mist py-24 md:py-28 border-t border-line">
@@ -187,9 +200,10 @@ export default function Products() {
           </div>
         ) : (
           <div className="grid md:grid-cols-2 gap-5">
-            {filtered.map((p) => (
+            {visibleProducts.map((p) => (
               <ProductCard key={p.id} product={p} />
             ))}
+
           </div>
         )}
 

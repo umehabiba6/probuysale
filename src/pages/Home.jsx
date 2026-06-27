@@ -24,7 +24,8 @@ export default function Home() {
         <HeroDigitalProducts />
 
         {/* Products */}
-        <Products />
+        <Products variant="home" limit={8} />
+
 
         {/* Categories */}
         <Categories />

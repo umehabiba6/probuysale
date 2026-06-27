@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 
 const LINKS = [
-  { href: "#products", label: "Books" },
+  { href: "/books", label: "Books" },
   { href: "#about", label: "About" },
   { href: "#contact", label: "Contact" },
 ];
+
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -61,11 +62,12 @@ export default function Navbar() {
             Hire a Team
           </a>
           <a
-            href="#products"
+            href="/books"
             className="text-sm font-medium bg-cobalt hover:bg-cobalt-light text-white px-4 py-2 rounded-md transition-colors focus-ring"
           >
             Browse Books
           </a>
+
         </nav>
 
 
@@ -105,12 +107,13 @@ export default function Navbar() {
             Hire a Team
           </a>
           <a
-            href="#products"
+            href="/books"
             onClick={() => setOpen(false)}
             className="text-sm font-medium bg-cobalt text-white px-4 py-2 rounded-md text-center"
           >
             Browse Books
           </a>
+
         </div>
       )}
 

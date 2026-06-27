@@ -9,7 +9,9 @@ import AdminLogin from "./pages/AdminLogin";
 import AdminDashboard from "./pages/AdminDashboard";
 
 import Home from "./pages/Home";
+import Books from "./pages/Books";
 import PrivacyPolicy from "./components/PrivacyPolicy";
+
 
 export default function App() {
   return (
@@ -17,7 +19,10 @@ export default function App() {
       <BootstrapDiagnostics />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/books" element={<Books />} />
+
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+
 
         <Route path="/hire-team" element={<HireTeam />} />
 
