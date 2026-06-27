@@ -12,6 +12,8 @@ const CATEGORY_TABS = [
   { key: "English Learning", label: "English" },
   { key: "Kids Learning", label: "Kids" },
   { key: "Programming", label: "Programming" },
+  { key: "Business", label: "Business" },
+  { key: "Startup Ideas", label: "Startup Ideas" },
 ];
 
 const CATEGORY_BADGE = {
@@ -27,7 +29,16 @@ const CATEGORY_BADGE = {
     className: "bg-purple-500/15 text-purple-200 border border-purple-500/25",
     label: "Programming",
   },
+  Business: {
+    className: "bg-amber-500/15 text-amber-200 border border-amber-500/25",
+    label: "Business (Leadership + AI) ",
+  },
+  "Startup Ideas": {
+    className: "bg-rose-500/15 text-rose-200 border border-rose-500/25",
+    label: "Startup Ideas",
+  },
 };
+
 
 function formatPrice(pkr, usd) {
   const parts = [];

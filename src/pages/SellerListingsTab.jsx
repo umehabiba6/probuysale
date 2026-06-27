@@ -16,8 +16,11 @@ const CATEGORIES = [
   "Graphic Design",
   "WordPress & Shopify",
   "Video & Animation",
+  "Business",
+  "Startup Ideas",
   "Other Digital Products",
 ];
+
 
 export default function SellerListingsTab({ uid }) {
   const [sellerName, setSellerName] = useState("");
