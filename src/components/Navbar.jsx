@@ -41,11 +41,12 @@ export default function Navbar() {
 
         <nav className="hidden md:flex items-center gap-8">
           <a
-            href="#top"
+            href="/"
             className="text-sm text-white/70 hover:text-white transition-colors focus-ring rounded"
           >
             Home
           </a>
+
           {LINKS.map((l) => (
             <a
               key={l.href}
@@ -55,7 +56,9 @@ export default function Navbar() {
               {l.label}
             </a>
           ))}
+
           <a
+
             href="/hire-team"
             className="text-sm text-white/70 hover:text-white transition-colors focus-ring rounded"
           >
