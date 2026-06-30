@@ -22,8 +22,14 @@ export default function AdminLogin() {
       const cred = await signInWithEmailAndPassword(auth, email, password);
       const uid = cred.user.uid;
 
+      // Support both "admins" and legacy/alternate collection naming like "main/admins" (case-sensitive).
+      // Current code expects role field at the user's document: { role: "admin" }
       const snap = await getDoc(doc(db, "admins", uid));
-      const data = snap.exists() ? snap.data() : null;
+      const legacySnap = !snap.exists()
+        ? await getDoc(doc(db, "main", "admins", uid))
+        : null;
+      const data = (snap.exists() ? snap.data() : legacySnap?.exists?.() ? legacySnap.data() : null);
+
 
       if (data?.role !== "admin") {
         throw new Error("This account is not an admin.");
