@@ -205,9 +205,16 @@ export default function AdminDashboard() {
         const listingRef = doc(collection(db, "listings"));
         const productRef = doc(db, "products", listingRef.id);
 
+        // Firestore does NOT allow undefined values for fields.
+        // Remove optional fields when empty.
+        const clean = (obj) =>
+          Object.fromEntries(
+            Object.entries(obj).filter(([, v]) => v !== undefined)
+          );
+
         await Promise.all([
-          setDoc(listingRef, payload),
-          setDoc(productRef, productPayload),
+          setDoc(listingRef, clean(payload)),
+          setDoc(productRef, clean(productPayload)),
         ]);
       }
 
