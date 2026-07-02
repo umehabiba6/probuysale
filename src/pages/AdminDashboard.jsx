@@ -55,6 +55,37 @@ export default function AdminDashboard() {
   });
   const [busy, setBusy] = useState(false);
 
+  // Products management
+  const [products, setProducts] = useState([]);
+  const [productsLoading, setProductsLoading] = useState(false);
+  const [productForm, setProductForm] = useState({
+    id: null,
+    title: "",
+    description: "",
+    category: "English Learning",
+    pricePKR: "",
+    priceUSD: "",
+    imageUrl: "",
+    gumroadLink: "",
+    previewUrl: "",
+    status: "published",
+    mode: "create",
+  });
+
+  // Blog management
+  const [posts, setPosts] = useState([]);
+  const [postsLoading, setPostsLoading] = useState(false);
+  const [postForm, setPostForm] = useState({
+    id: null,
+    title: "",
+    slug: "",
+    excerpt: "",
+    content: "",
+    coverImageUrl: "",
+    status: "published",
+    mode: "create",
+  });
+
   async function loadListings() {
     setListingsLoading(true);
     setError("");
@@ -287,6 +318,153 @@ export default function AdminDashboard() {
     }
   }
 
+  async function loadProducts() {
+    setProductsLoading(true);
+    try {
+      const snap = await getDocs(collection(db, "products"));
+      setProducts(snap.docs.map((d) => ({ id: d.id, ...d.data() })));
+    } catch (e) {
+      console.error(e);
+      setProducts([]);
+    } finally {
+      setProductsLoading(false);
+    }
+  }
+
+  async function loadPosts() {
+    setPostsLoading(true);
+    try {
+      const snap = await getDocs(collection(db, "blogPosts"));
+      setPosts(snap.docs.map((d) => ({ id: d.id, ...d.data() })));
+    } catch (e) {
+      console.error(e);
+      setPosts([]);
+    } finally {
+      setPostsLoading(false);
+    }
+  }
+
+  async function handleLoadProductsTab() {
+    if (products.length === 0 && !productsLoading) await loadProducts();
+  }
+
+  async function handleLoadBlogTab() {
+    if (posts.length === 0 && !postsLoading) await loadPosts();
+  }
+
+  async function handleSubmitProduct(e) {
+    e.preventDefault();
+    setBusy(true);
+    setError("");
+    try {
+      if (!productForm.title || !productForm.gumroadLink) throw new Error("Title and Gumroad Link are required.");
+      const payload = {
+        title: safeTrim(productForm.title),
+        description: safeTrim(productForm.description),
+        category: productForm.category,
+        pricePKR: safeTrim(productForm.pricePKR) || undefined,
+        priceUSD: safeTrim(productForm.priceUSD) || undefined,
+        imageUrl: safeTrim(productForm.imageUrl) || undefined,
+        gumroadLink: safeTrim(productForm.gumroadLink),
+        previewUrl: safeTrim(productForm.previewUrl) || undefined,
+        status: productForm.status || "draft",
+        createdAt: serverTimestamp(),
+      };
+
+      if (productForm.mode === "edit" && productForm.id) {
+        await setDoc(doc(db, "products", productForm.id), payload, { merge: true });
+      } else {
+        const ref = doc(collection(db, "products"));
+        await setDoc(ref, payload);
+      }
+
+      setProductForm({ id: null, title: "", description: "", category: "English Learning", pricePKR: "", priceUSD: "", imageUrl: "", gumroadLink: "", previewUrl: "", status: "published", mode: "create" });
+      await loadProducts();
+    } catch (e) {
+      console.error(e);
+      setError(e?.message || "Failed to save product.");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  function handleEditProduct(p) {
+    setProductForm({ id: p.id, title: p.title || "", description: p.description || "", category: p.category || "English Learning", pricePKR: p.pricePKR || "", priceUSD: p.priceUSD || "", imageUrl: p.imageUrl || "", gumroadLink: p.gumroadLink || "", previewUrl: p.previewUrl || "", status: p.status || "draft", mode: "edit" });
+  }
+
+  async function handleDeleteProduct(id) {
+    const ok = window.confirm("Delete this product? This cannot be undone.");
+    if (!ok) return;
+    setBusy(true);
+    setError("");
+    try {
+      await deleteDoc(doc(db, "products", id));
+      await loadProducts();
+    } catch (e) {
+      console.error(e);
+      setError(e?.message || "Failed to delete product.");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  function slugify(v) {
+    return (v || "").toLowerCase().trim().replace(/[^a-z0-9\s-]/g, "").replace(/\s+/g, "-").replace(/-+/g, "-");
+  }
+
+  async function handleSubmitPost(e) {
+    e.preventDefault();
+    setBusy(true);
+    setError("");
+    try {
+      if (!postForm.title || !postForm.excerpt || !postForm.content) throw new Error("Title, excerpt and content are required.");
+      const payload = {
+        title: safeTrim(postForm.title),
+        slug: safeTrim(postForm.slug) || slugify(postForm.title),
+        excerpt: safeTrim(postForm.excerpt),
+        content: safeTrim(postForm.content),
+        coverImageUrl: safeTrim(postForm.coverImageUrl) || undefined,
+        status: postForm.status || "draft",
+        createdAt: serverTimestamp(),
+      };
+
+      if (postForm.mode === "edit" && postForm.id) {
+        await setDoc(doc(db, "blogPosts", postForm.id), payload, { merge: true });
+      } else {
+        const ref = doc(collection(db, "blogPosts"));
+        await setDoc(ref, payload);
+      }
+
+      setPostForm({ id: null, title: "", slug: "", excerpt: "", content: "", coverImageUrl: "", status: "published", mode: "create" });
+      await loadPosts();
+    } catch (e) {
+      console.error(e);
+      setError(e?.message || "Failed to save post.");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  function handleEditPost(p) {
+    setPostForm({ id: p.id, title: p.title || "", slug: p.slug || "", excerpt: p.excerpt || "", content: p.content || "", coverImageUrl: p.coverImageUrl || "", status: p.status || "draft", mode: "edit" });
+  }
+
+  async function handleDeletePost(id) {
+    const ok = window.confirm("Delete this post? This cannot be undone.");
+    if (!ok) return;
+    setBusy(true);
+    setError("");
+    try {
+      await deleteDoc(doc(db, "blogPosts", id));
+      await loadPosts();
+    } catch (e) {
+      console.error(e);
+      setError(e?.message || "Failed to delete post.");
+    } finally {
+      setBusy(false);
+    }
+  }
+
   return (
     <section className="bg-mist pt-20 md:pt-24 pb-16 border-t border-line">
       <div className="max-w-6xl mx-auto px-6">
@@ -338,6 +516,35 @@ export default function AdminDashboard() {
           >
             Manage Listings
           </button>
+
+          <button
+            onClick={async () => {
+              setAdminTab("products");
+              await handleLoadProductsTab();
+            }}
+            className={
+              adminTab === "products"
+                ? "bg-cobalt hover:bg-cobalt-light text-white px-4 py-2 rounded-md text-sm font-medium focus-ring"
+                : "bg-white/70 border border-line text-ink px-4 py-2 rounded-md text-sm font-medium focus-ring"
+            }
+          >
+            Products
+          </button>
+
+          <button
+            onClick={async () => {
+              setAdminTab("blog");
+              await handleLoadBlogTab();
+            }}
+            className={
+              adminTab === "blog"
+                ? "bg-cobalt hover:bg-cobalt-light text-white px-4 py-2 rounded-md text-sm font-medium focus-ring"
+                : "bg-white/70 border border-line text-ink px-4 py-2 rounded-md text-sm font-medium focus-ring"
+            }
+          >
+            Blog
+          </button>
+
           <button
             onClick={() => setAdminTab("roadmap")}
             className={
@@ -562,6 +769,195 @@ export default function AdminDashboard() {
                           >
                             🗑️
                           </button>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        ) : adminTab === "products" ? (
+          <div className="grid lg:grid-cols-5 gap-6">
+            <div className="lg:col-span-2 bg-white/70 backdrop-blur border border-line rounded-xl p-5">
+              <p className="font-mono text-xs text-cobalt tracking-widest">
+                {productForm.mode === "edit" ? "Edit product" : "Add new product"}
+              </p>
+
+              <form onSubmit={handleSubmitProduct} className="mt-4 space-y-3">
+                <div>
+                  <label className="block text-sm text-slate mb-1">Title</label>
+                  <input
+                    className="form-input text-ink w-full"
+                    value={productForm.title}
+                    onChange={(e) => setProductForm((f) => ({ ...f, title: e.target.value }))}
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm text-slate mb-1">Description</label>
+                  <textarea
+                    className="form-input text-ink min-h-28 w-full"
+                    value={productForm.description}
+                    onChange={(e) => setProductForm((f) => ({ ...f, description: e.target.value }))}
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm text-slate mb-1">Category</label>
+                  <select className="form-input text-ink w-full" value={productForm.category} onChange={(e) => setProductForm((f) => ({ ...f, category: e.target.value }))}>
+                    <option>English Learning</option>
+                    <option>Kids Learning</option>
+                    <option>Programming (Flutter)</option>
+                    <option>Programming (Python)</option>
+                    <option>Programming (C++)</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <label className="block text-sm text-slate mb-1">Price PKR</label>
+                    <input className="form-input text-ink w-full" value={productForm.pricePKR} onChange={(e) => setProductForm((f) => ({ ...f, pricePKR: e.target.value }))} placeholder="PKR 500" />
+                  </div>
+                  <div>
+                    <label className="block text-sm text-slate mb-1">Price USD</label>
+                    <input className="form-input text-ink w-full" value={productForm.priceUSD} onChange={(e) => setProductForm((f) => ({ ...f, priceUSD: e.target.value }))} placeholder="$5" />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm text-slate mb-1">Cover Image URL</label>
+                  <input className="form-input text-ink w-full" value={productForm.imageUrl} onChange={(e) => setProductForm((f) => ({ ...f, imageUrl: e.target.value }))} placeholder="https://i.imgbb.com/..." />
+                </div>
+
+                <div>
+                  <label className="block text-sm text-slate mb-1">Gumroad Link</label>
+                  <input className="form-input text-ink w-full" value={productForm.gumroadLink} onChange={(e) => setProductForm((f) => ({ ...f, gumroadLink: e.target.value }))} required placeholder="https://gumroad.com/..." />
+                </div>
+
+                <div>
+                  <label className="block text-sm text-slate mb-1">Preview URL (optional)</label>
+                  <input className="form-input text-ink w-full" value={productForm.previewUrl} onChange={(e) => setProductForm((f) => ({ ...f, previewUrl: e.target.value }))} placeholder="https://..." />
+                </div>
+
+                <div>
+                  <label className="block text-sm text-slate mb-1">Status</label>
+                  <select className="form-input text-ink w-full" value={productForm.status} onChange={(e) => setProductForm((f) => ({ ...f, status: e.target.value }))}>
+                    <option value="published">Published</option>
+                    <option value="draft">Draft</option>
+                  </select>
+                </div>
+
+                <div className="flex gap-3">
+                  <button className="flex-1 bg-cobalt hover:bg-cobalt-light text-white text-sm font-medium py-3 rounded-md transition-colors focus-ring disabled:opacity-50" type="submit" disabled={busy}>{busy ? "Saving…" : productForm.mode === "edit" ? "Save changes" : "Add product"}</button>
+                  {productForm.mode === "edit" && (
+                    <button type="button" disabled={busy} onClick={() => setProductForm({ id: null, title: "", description: "", category: "English Learning", pricePKR: "", priceUSD: "", imageUrl: "", gumroadLink: "", previewUrl: "", status: "published", mode: "create" })} className="bg-white/70 border border-line text-ink text-sm font-medium px-4 py-3 rounded-md transition-colors focus-ring disabled:opacity-50">Cancel</button>
+                  )}
+                </div>
+              </form>
+            </div>
+
+            <div className="lg:col-span-3">
+              <div className="bg-white/70 backdrop-blur border border-line rounded-xl p-5">
+                <div className="flex items-center justify-between gap-4 mb-4">
+                  <p className="font-mono text-xs text-cobalt tracking-widest">All products</p>
+                  <span className="text-slate text-sm font-mono">{productsLoading ? "Loading…" : `${products.length} total`}</span>
+                </div>
+
+                {products.length === 0 && !productsLoading ? (<div className="text-slate text-sm">No products yet.</div>) : null}
+
+                <div className="space-y-4">
+                  {products.map((p) => (
+                    <div key={p.id} className="border border-line rounded-xl p-4 bg-white/50">
+                      <div className="flex items-start justify-between gap-4">
+                        <div>
+                          <p className="font-display font-semibold text-ink">{p.title}</p>
+                          <p className="font-mono text-xs text-slate mt-1">{p.category} • {p.pricePKR ? `PKR ${p.pricePKR}` : ""}{p.priceUSD ? ` • $${p.priceUSD}` : ""}</p>
+                          <p className="text-slate text-sm mt-2 line-clamp-2">{p.description}</p>
+                        </div>
+                        <div className="flex gap-2">
+                          <button type="button" onClick={() => handleEditProduct(p)} className="p-2 rounded-md bg-white/70 hover:bg-white border border-line focus-ring text-ink" aria-label="Edit">✏️</button>
+                          <button type="button" onClick={() => handleDeleteProduct(p.id)} className="p-2 rounded-md bg-white/70 hover:bg-white border border-line focus-ring text-amber" aria-label="Delete" disabled={busy}>🗑️</button>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        ) : adminTab === "blog" ? (
+          <div className="grid lg:grid-cols-5 gap-6">
+            <div className="lg:col-span-2 bg-white/70 backdrop-blur border border-line rounded-xl p-5">
+              <p className="font-mono text-xs text-cobalt tracking-widest">{postForm.mode === "edit" ? "Edit post" : "Add new post"}</p>
+
+              <form onSubmit={handleSubmitPost} className="mt-4 space-y-3">
+                <div>
+                  <label className="block text-sm text-slate mb-1">Title</label>
+                  <input className="form-input text-ink w-full" value={postForm.title} onChange={(e) => setPostForm((f) => ({ ...f, title: e.target.value, slug: f.mode === 'create' ? (e.target.value || '') : f.slug }))} required />
+                </div>
+
+                <div>
+                  <label className="block text-sm text-slate mb-1">Slug</label>
+                  <input className="form-input text-ink w-full" value={postForm.slug} onChange={(e) => setPostForm((f) => ({ ...f, slug: e.target.value }))} placeholder="optional: auto-generated from title" />
+                </div>
+
+                <div>
+                  <label className="block text-sm text-slate mb-1">Short excerpt (max 200 chars)</label>
+                  <textarea className="form-input text-ink w-full" value={postForm.excerpt} onChange={(e) => setPostForm((f) => ({ ...f, excerpt: e.target.value }))} maxLength={200} required />
+                </div>
+
+                <div>
+                  <label className="block text-sm text-slate mb-1">Full content</label>
+                  <textarea className="form-input text-ink min-h-40 w-full" value={postForm.content} onChange={(e) => setPostForm((f) => ({ ...f, content: e.target.value }))} required />
+                </div>
+
+                <div>
+                  <label className="block text-sm text-slate mb-1">Cover image URL (optional)</label>
+                  <input className="form-input text-ink w-full" value={postForm.coverImageUrl} onChange={(e) => setPostForm((f) => ({ ...f, coverImageUrl: e.target.value }))} />
+                </div>
+
+                <div>
+                  <label className="block text-sm text-slate mb-1">Status</label>
+                  <select className="form-input text-ink w-full" value={postForm.status} onChange={(e) => setPostForm((f) => ({ ...f, status: e.target.value }))}>
+                    <option value="published">Published</option>
+                    <option value="draft">Draft</option>
+                  </select>
+                </div>
+
+                <div className="flex gap-3">
+                  <button className="flex-1 bg-cobalt hover:bg-cobalt-light text-white text-sm font-medium py-3 rounded-md transition-colors focus-ring disabled:opacity-50" type="submit" disabled={busy}>{busy ? "Saving…" : postForm.mode === "edit" ? "Save changes" : "Add post"}</button>
+                  {postForm.mode === "edit" && (
+                    <button type="button" disabled={busy} onClick={() => setPostForm({ id: null, title: "", slug: "", excerpt: "", content: "", coverImageUrl: "", status: "published", mode: "create" })} className="bg-white/70 border border-line text-ink text-sm font-medium px-4 py-3 rounded-md transition-colors focus-ring disabled:opacity-50">Cancel</button>
+                  )}
+                </div>
+              </form>
+            </div>
+
+            <div className="lg:col-span-3">
+              <div className="bg-white/70 backdrop-blur border border-line rounded-xl p-5">
+                <div className="flex items-center justify-between gap-4 mb-4">
+                  <p className="font-mono text-xs text-cobalt tracking-widest">All posts</p>
+                  <span className="text-slate text-sm font-mono">{postsLoading ? "Loading…" : `${posts.length} total`}</span>
+                </div>
+
+                {posts.length === 0 && !postsLoading ? (<div className="text-slate text-sm">No posts yet.</div>) : null}
+
+                <div className="space-y-4">
+                  {posts.map((p) => (
+                    <div key={p.id} className="border border-line rounded-xl p-4 bg-white/50">
+                      <div className="flex items-start justify-between gap-4">
+                        <div>
+                          <p className="font-display font-semibold text-ink">{p.title}</p>
+                          <p className="font-mono text-xs text-slate mt-1">{p.slug} • {p.status}</p>
+                          <p className="text-slate text-sm mt-2 line-clamp-2">{p.excerpt}</p>
+                        </div>
+                        <div className="flex gap-2">
+                          <button type="button" onClick={() => handleEditPost(p)} className="p-2 rounded-md bg-white/70 hover:bg-white border border-line focus-ring text-ink" aria-label="Edit">✏️</button>
+                          <button type="button" onClick={() => handleDeletePost(p.id)} className="p-2 rounded-md bg-white/70 hover:bg-white border border-line focus-ring text-amber" aria-label="Delete" disabled={busy}>🗑️</button>
                         </div>
                       </div>
                     </div>
