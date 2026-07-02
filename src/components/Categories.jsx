@@ -1,5 +1,5 @@
 import { BookOpen, Code, MessageSquare } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 
 function scrollToProducts() {
   const el = document.getElementById("products");

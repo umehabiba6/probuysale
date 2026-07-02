@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 const LINKS = [
   { href: "/books", label: "Books" },
   { href: "#about", label: "About" },
+  { href: "#blog", label: "Blog" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -58,7 +59,6 @@ export default function Navbar() {
           ))}
 
           <a
-
             href="/hire-team"
             className="text-sm text-white/70 hover:text-white transition-colors focus-ring rounded"
           >

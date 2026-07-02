@@ -11,7 +11,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import Home from "./pages/Home";
 import Books from "./pages/Books";
 import PrivacyPolicy from "./components/PrivacyPolicy";
-
+import BlogPost from "./pages/BlogPost";
 
 export default function App() {
   return (
@@ -26,8 +26,7 @@ export default function App() {
 
         <Route path="/hire-team" element={<HireTeam />} />
 
-        {/* Blog post (placeholder) */}
-        <Route path="/blog/:slug" element={<div />} />
+        <Route path="/blog/:slug" element={<BlogPost />} />
 
         {/* Admin */}
         <Route path="/admin/login" element={<AdminLogin />} />

@@ -4,14 +4,13 @@ import {
   deleteDoc,
   doc,
   getDocs,
-  query,
   serverTimestamp,
   setDoc,
-  where,
 } from "firebase/firestore";
 import { db } from "../firebase";
 
 const CATEGORIES = [
+
   "Flutter / Mobile Apps",
   "React / Web Development",
   "AI & ML Services",
