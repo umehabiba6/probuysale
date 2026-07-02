@@ -5,6 +5,7 @@ import Testimonials from "../components/Testimonials";
 import HeroDigitalProducts from "../components/HeroDigitalProducts";
 import About from "../components/About";
 import Products from "../components/Products";
+import Blog from "../components/Blog";
 import Categories from "../components/Categories";
 
 import SiteLayout from "../layouts/SiteLayout";
@@ -35,6 +36,9 @@ export default function Home() {
 
         {/* Testimonials */}
         <Testimonials />
+
+        {/* Blog */}
+        <Blog />
 
         {/* Contact */}
         <Contact />
