@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import useAnonAuth from "../hooks/useAnonAuth";
 import {
   collection,
   deleteDoc,
@@ -7,7 +8,7 @@ import {
   serverTimestamp,
   setDoc,
 } from "firebase/firestore";
-import { db } from "../firebase";
+import { db, auth } from "../firebase";
 
 const CATEGORIES = [
 
@@ -33,6 +34,7 @@ function safeTrim(v) {
 }
 
 export default function AdminDashboard() {
+  const { uid: currentUid } = useAnonAuth();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [counts, setCounts] = useState({ sellers: 0, listings: 0, conversations: 0, admins: 0 });
@@ -369,6 +371,8 @@ export default function AdminDashboard() {
         previewUrl: safeTrim(productForm.previewUrl) || undefined,
         status: productForm.status || "draft",
         createdAt: serverTimestamp(),
+        sellerId: currentUid || productForm.sellerId || undefined,
+        sellerName: (auth?.currentUser && auth.currentUser.displayName) || undefined,
       };
 
       if (productForm.mode === "edit" && productForm.id) {
