@@ -369,7 +369,7 @@ export default function AdminDashboard() {
         imageUrl: safeTrim(productForm.imageUrl) || undefined,
         gumroadLink: safeTrim(productForm.gumroadLink),
         previewUrl: safeTrim(productForm.previewUrl) || undefined,
-        status: productForm.status || "draft",
+        status: productForm.status || "published",
         createdAt: serverTimestamp(),
         sellerId: currentUid || productForm.sellerId || undefined,
         sellerName: (auth?.currentUser && auth.currentUser.displayName) || undefined,
