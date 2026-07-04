@@ -375,11 +375,17 @@ export default function AdminDashboard() {
         sellerName: (auth?.currentUser && auth.currentUser.displayName) || undefined,
       };
 
+      // Firestore does NOT allow undefined values. Remove optional fields when empty.
+      const clean = (obj) =>
+        Object.fromEntries(
+          Object.entries(obj).filter(([, v]) => v !== undefined)
+        );
+
       if (productForm.mode === "edit" && productForm.id) {
-        await setDoc(doc(db, "products", productForm.id), payload, { merge: true });
+        await setDoc(doc(db, "products", productForm.id), clean(payload), { merge: true });
       } else {
         const ref = doc(collection(db, "products"));
-        await setDoc(ref, payload);
+        await setDoc(ref, clean(payload));
       }
 
       setProductForm({ id: null, title: "", description: "", category: "English Learning", pricePKR: "", priceUSD: "", imageUrl: "", gumroadLink: "", previewUrl: "", status: "published", mode: "create" });
