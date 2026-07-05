@@ -2,31 +2,51 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // Helper: check that the authenticated user is an admin (admins/{uid}.role == 'admin')
+    // Helper: check that the authenticated user is an admin
+    // Tries to find a document in /admins/{uid} OR /main/admins/{uid}
     function isAdmin() {
-      return request.auth != null &&
-        get(/databases/$(database)/documents/admins/$(request.auth.uid)).data.role == 'admin';
+      return request.auth != null && (
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid)) ||
+        exists(/databases/$(database)/documents/main/admins/$(request.auth.uid))
+      );
     }
 
-    // Products: public read only for published, writes only for admins
+    // Products: public read only for published, writes for admins
     match /products/{productId} {
       allow read: if resource.data.status == "published" || request.auth != null;
       allow create, update, delete: if isAdmin();
     }
 
-    // Blog posts: public read only for published, writes only for admins
+    // Blog posts: public read only for published, writes for admins
     match /blogPosts/{postId} {
       allow read: if resource.data.status == "published" || request.auth != null;
       allow create, update, delete: if isAdmin();
     }
 
-    // Admins collection: only existing admins may read/write their own record
+    // Listings: admins can write
+    match /listings/{listingId} {
+      allow read: if request.auth != null;
+      allow create, update, delete: if isAdmin();
+    }
+
+    // Admins collection: readable by authenticated users, writable by admins
     match /admins/{adminId} {
-      allow read: if isAdmin() || (request.auth != null && request.auth.uid == adminId);
+      allow read: if request.auth != null;
       allow write: if isAdmin();
     }
 
-    // Default: deny writes, allow reads only to authenticated users for other collections
+    // Sellers, Conversations, etc: authenticated users can read, admins can write
+    match /sellers/{sellerId} {
+      allow read: if request.auth != null;
+      allow write: if isAdmin();
+    }
+
+    match /conversations/{conversationId} {
+      allow read: if request.auth != null;
+      allow write: if isAdmin();
+    }
+
+    // Default: deny all writes, allow authenticated reads
     match /{document=**} {
       allow read: if request.auth != null;
       allow write: if false;

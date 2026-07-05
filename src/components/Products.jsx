@@ -126,11 +126,33 @@ export default function Products({ variant = "full", limit } = {}) {
       try {
         setLoading(true);
         const productsRef = collection(db, "products");
-        const q = query(productsRef, where("status", "==", "published"), orderBy("createdAt", "desc"));
-        const snap = await getDocs(q);
+        let snap;
+        try {
+          const q = query(
+            productsRef,
+            where("status", "==", "published"),
+            orderBy("createdAt", "desc")
+          );
+          snap = await getDocs(q);
+        } catch (queryErr) {
+          // If Firestore requires a composite index or the query fails for
+          // any reason, fall back to a simple collection fetch and filter
+          // client-side so the site still shows products.
+          console.warn("Products query failed, falling back to unfiltered fetch:", queryErr);
+          snap = await getDocs(productsRef);
+        }
+
         if (cancelled) return;
         const docs = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
-        setProducts(docs);
+        // If we fell back to an unfiltered fetch, ensure we only expose published items
+        const published = docs.filter((p) => p.status === "published");
+        setProducts(published);
+        // Debug: log when products are empty so devs can inspect Firestore state
+        if (published.length === 0) {
+          console.debug("Products fetched 0 published items; raw docs:", docs.map((d) => ({ id: d.id, keys: Object.keys(d) })));
+        } else {
+          console.debug(`Products fetched ${published.length} published items.`);
+        }
       } catch (e) {
         console.error(e);
         if (!cancelled) setProducts([]);
