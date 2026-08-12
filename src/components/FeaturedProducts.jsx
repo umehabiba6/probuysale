@@ -171,15 +171,13 @@ export default function FeaturedProducts({ activeCategory, onCategoryChange, onI
         <div className="rounded-3xl border border-dashed border-white/10 bg-black/40 p-12 text-center">
           <p className="text-lg font-semibold text-white">New specimens arriving soon.</p>
           <p className="mt-3 text-sm text-white/70">
-            Follow us on Instagram for daily updates.
+            Explore our reel gallery for specimen videos and close-up stories.
           </p>
           <a
-            href="https://instagram.com/artistic_fine_minerals"
-            target="_blank"
-            rel="noreferrer"
+            href="#videos"
             className="mt-6 inline-flex items-center gap-2 rounded-full border border-gold px-5 py-3 text-sm font-semibold text-gold transition hover:bg-gold/10"
           >
-            View Instagram
+            Watch Reels
             <ChevronRight className="h-4 w-4" />
           </a>
         </div>

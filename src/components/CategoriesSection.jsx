@@ -65,13 +65,11 @@ export default function CategoriesSection({ onSelectCategory }) {
             <div className="space-y-5 p-8">
               <p className="text-sm leading-7 text-white/75">{item.description}</p>
               <a
-                href="https://instagram.com/artistic_fine_minerals"
-                target="_blank"
-                rel="noreferrer"
+                href="#videos"
                 className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gold px-5 py-3 text-sm font-semibold text-ink transition duration-300 hover:bg-gold-light"
               >
                 <ExternalLink className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                View Collection
+                Watch Reels
               </a>
             </div>
           </div>

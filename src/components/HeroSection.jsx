@@ -32,12 +32,10 @@ export default function HeroSection() {
                 Explore Signature Pieces
               </a>
               <a
-                href="https://instagram.com/artistic_fine_minerals"
-                target="_blank"
-                rel="noreferrer"
+                href="#videos"
                 className="inline-flex items-center justify-center rounded-full border border-gold px-8 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
               >
-                View Curated Portfolio
+                Watch Reel Gallery
               </a>
             </div>
 

@@ -24,12 +24,10 @@ export default function AboutSection() {
           </div>
 
           <a
-            href="https://instagram.com/artistic_fine_minerals"
-            target="_blank"
-            rel="noreferrer"
+            href="#videos"
             className="mt-8 inline-flex items-center justify-center rounded-full bg-gold px-6 py-3 text-sm font-semibold text-ink transition hover:bg-gold-light"
           >
-            Follow Our Journey
+            Explore Our Reel Stories
           </a>
         </div>
 

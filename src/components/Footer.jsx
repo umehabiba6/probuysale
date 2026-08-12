@@ -22,15 +22,10 @@ export default function Footer() {
             </div>
 
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.35em] text-gold">Social</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.35em] text-gold">Media</p>
               <div className="mt-4 space-y-3 text-sm text-white/70">
-                <a
-                  href="https://instagram.com/artistic_fine_minerals"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="block hover:text-gold"
-                >
-                  Instagram
+                <a href="#videos" className="block hover:text-gold">
+                  Video Gallery
                 </a>
               </div>
             </div>

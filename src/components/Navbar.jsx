@@ -4,6 +4,7 @@ import { Menu, X, Share2 } from "lucide-react";
 const navLinks = [
   { label: "Home", href: "#home" },
   { label: "Collection", href: "#products" },
+  { label: "Videos", href: "#videos" },
   { label: "About", href: "#about" },
   { label: "Contact", href: "#contact" },
 ];
@@ -74,15 +75,6 @@ export default function Navbar() {
               onClick={() => setOpen(false)}
             >
               Inquire Now
-            </a>
-            <a
-              href="https://instagram.com/artistic_fine_minerals"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-3 text-sm text-white transition hover:bg-white/10"
-            >
-              <Instagram className="h-4 w-4" />
-              Instagram
             </a>
           </div>
         </div>

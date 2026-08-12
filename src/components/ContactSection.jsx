@@ -72,7 +72,7 @@ export default function ContactSection({ initialSpecimen }) {
 
           <div className="mt-10 space-y-4 rounded-[2rem] border border-white/10 bg-surface p-6 text-white/80">
             <p className="text-sm">📍 Pakistan (Gilgit-Baltistan region)</p>
-            <p className="text-sm">📸 Instagram: @artistic_fine_minerals</p>
+            <p className="text-sm">� WhatsApp and email inquiries welcome</p>
             <p className="text-sm">⏰ Response within 24 hours</p>
           </div>
         </div>

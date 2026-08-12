@@ -5,6 +5,7 @@ import HeroSection from "../components/HeroSection";
 import SignatureSpecimens from "../components/SignatureSpecimens";
 import FeaturedProducts from "../components/FeaturedProducts";
 import CategoriesSection from "../components/CategoriesSection";
+import VideoGallerySection from "../components/VideoGallerySection";
 import AboutSection from "../components/AboutSection";
 import CertificationsSection from "../components/CertificationsSection";
 import ContactSection from "../components/ContactSection";
@@ -28,6 +29,7 @@ export default function Home() {
       <main className="space-y-16 px-6 pb-16 pt-28 lg:px-8">
         <HeroSection />
         <SignatureSpecimens />
+        <VideoGallerySection />
         <FeaturedProducts
           activeCategory={activeCategory}
           onCategoryChange={setActiveCategory}
