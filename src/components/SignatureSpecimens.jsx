@@ -4,27 +4,30 @@ export default function SignatureSpecimens() {
       title: "Aurora Aquamarine Prism",
       description: "A flawless blue tower carved from premium Swat Valley aquamarine.",
       origin: "Swat Valley, Pakistan",
-      image:
+      image: "/images/specimens/aurora-aquamarine-prism.jpg",
+      fallbackImageUrl:
         "https://images.unsplash.com/photo-1519741490076-0c673dacd9a2?auto=format&fit=crop&w=1200&q=80",
     },
     {
       title: "Imperial Emerald Matrix",
       description: "A dramatic green matrix specimen with vivid, collector-grade emerald crystals.",
       origin: "Gilgit-Baltistan, Pakistan",
-      image:
+      image: "/images/specimens/imperial-emerald-matrix.jpg",
+      fallbackImageUrl:
         "https://images.unsplash.com/photo-1548092372-d3d01d9f7601?auto=format&fit=crop&w=1200&q=80",
     },
     {
       title: "Royal Amethyst Cathedral",
       description: "A luxurious purple amethyst cathedral with deep color and extraordinary clarity.",
       origin: "Skardu, Pakistan",
-      image:
+      image: "/images/specimens/royal-amethyst-cathedral.jpg",
+      fallbackImageUrl:
         "https://images.unsplash.com/photo-1516822003754-cca485356ecb?auto=format&fit=crop&w=1200&q=80",
     },
   ];
 
   return (
-    <section className="rounded-[2rem] border border-line bg-gradient-to-br from-stone-950 via-ink to-black/80 p-6 text-white shadow-xl shadow-black/30 sm:p-8">
+    <section className="animate-fade-up rounded-[2rem] border border-line bg-gradient-to-br from-stone-950 via-ink to-black/80 p-6 text-white shadow-xl shadow-black/30 sm:p-8">
       <div className="mb-10 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p className="text-xs uppercase tracking-[0.35em] text-gold">Signature Specimens</p>
@@ -45,6 +48,10 @@ export default function SignatureSpecimens() {
               <img
                 src={specimen.image}
                 alt={specimen.title}
+                onError={(event) => {
+                  event.currentTarget.onerror = null;
+                  event.currentTarget.src = specimen.fallbackImageUrl;
+                }}
                 className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent p-5">

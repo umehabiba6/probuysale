@@ -14,7 +14,8 @@ const sampleProducts = [
     pricePKR: "45,000",
     priceUSD: "180",
     status: "Available",
-    coverImageUrl:
+    coverImageUrl: "/images/specimens/royal-amethyst-cathedral.jpg",
+    fallbackImageUrl:
       "https://images.unsplash.com/photo-1516822003754-cca485356ecb?auto=format&fit=crop&w=900&q=80",
   },
   {
@@ -25,7 +26,8 @@ const sampleProducts = [
     pricePKR: "120,000",
     priceUSD: "480",
     status: "Available",
-    coverImageUrl:
+    coverImageUrl: "/images/specimens/ocean-clear-aquamarine-tower.jpg",
+    fallbackImageUrl:
       "https://images.unsplash.com/photo-1519741490076-0c673dacd9a2?auto=format&fit=crop&w=900&q=80",
   },
   {
@@ -36,7 +38,8 @@ const sampleProducts = [
     pricePKR: "95,000",
     priceUSD: "380",
     status: "Available",
-    coverImageUrl:
+    coverImageUrl: "/images/specimens/imperial-green-emerald-matrix.jpg",
+    fallbackImageUrl:
       "https://images.unsplash.com/photo-1548092372-d3d01d9f7601?auto=format&fit=crop&w=900&q=80",
   },
   {
@@ -47,7 +50,8 @@ const sampleProducts = [
     pricePKR: "75,000",
     priceUSD: "300",
     status: "Sold",
-    coverImageUrl:
+    coverImageUrl: "/images/specimens/watermelon-tourmaline-slice.jpg",
+    fallbackImageUrl:
       "https://images.unsplash.com/photo-1517039630-7f8b8cbfca16?auto=format&fit=crop&w=900&q=80",
   },
   {
@@ -58,7 +62,8 @@ const sampleProducts = [
     pricePKR: "55,000",
     priceUSD: "220",
     status: "Available",
-    coverImageUrl:
+    coverImageUrl: "/images/specimens/smoky-quartz-phantom-cluster.jpg",
+    fallbackImageUrl:
       "https://images.unsplash.com/photo-1517904964774-3fba1aa72b1d?auto=format&fit=crop&w=900&q=80",
   },
   {
@@ -69,7 +74,8 @@ const sampleProducts = [
     pricePKR: "65,000",
     priceUSD: "260",
     status: "Available",
-    coverImageUrl:
+    coverImageUrl: "/images/specimens/collectors-fluorite-octahedron.jpg",
+    fallbackImageUrl:
       "https://images.unsplash.com/photo-1516572113194-71e018c1f784?auto=format&fit=crop&w=900&q=80",
   },
 ];
@@ -185,7 +191,11 @@ export default function FeaturedProducts({ activeCategory, onCategoryChange, onI
                 <img
                   src={product.coverImageUrl || "https://via.placeholder.com/640x640?text=Specimen"}
                   alt={product.title}
-                  className="h-64 w-full object-cover"
+                  onError={(event) => {
+                    event.currentTarget.onerror = null;
+                    event.currentTarget.src = product.fallbackImageUrl || "https://via.placeholder.com/640x640?text=Specimen";
+                  }}
+                  className="h-64 w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <span className="absolute left-4 top-4 rounded-full bg-black/70 px-3 py-1 text-xs uppercase tracking-[0.3em] text-gold">
                   {formatCategory(product.category)}

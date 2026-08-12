@@ -89,7 +89,7 @@ export default function HeroSection() {
           </div>
 
           <div className="relative rounded-[2rem] border border-line bg-surface p-6 shadow-[0_30px_80px_-40px_rgba(0,0,0,0.8)] sm:p-8">
-            <div className="h-[420px] rounded-[1.5rem] bg-[radial-gradient(circle_at_top_left,_rgba(201,168,76,0.18),_transparent_30%),linear-gradient(180deg,_rgba(255,255,255,0.04),_rgba(255,255,255,0))] p-6">
+            <div className="animate-glow h-[420px] rounded-[1.5rem] bg-[radial-gradient(circle_at_top_left,_rgba(201,168,76,0.18),_transparent_30%),linear-gradient(180deg,_rgba(255,255,255,0.04),_rgba(255,255,255,0))] p-6">
               <div className="flex h-full flex-col items-center justify-center rounded-[1.25rem] border border-white/10 bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.03),_transparent_45%)] p-8 text-center">
                 <p className="text-sm uppercase tracking-[0.35em] text-gold">Luxury Collection</p>
                 <p className="mt-8 text-3xl font-semibold text-white">Premium gems, museum-quality minerals, and handcrafted specimen displays.</p>
