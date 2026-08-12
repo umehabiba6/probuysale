@@ -1,51 +1,44 @@
+import { useState } from "react";
 import { Helmet } from "react-helmet-async";
-
-import Contact from "../components/Contact";
-import Testimonials from "../components/Testimonials";
-import HeroDigitalProducts from "../components/HeroDigitalProducts";
-import About from "../components/About";
-import Products from "../components/Products";
-import Blog from "../components/Blog";
-import Categories from "../components/Categories";
-
-import SiteLayout from "../layouts/SiteLayout";
+import Navbar from "../components/Navbar";
+import HeroSection from "../components/HeroSection";
+import SignatureSpecimens from "../components/SignatureSpecimens";
+import FeaturedProducts from "../components/FeaturedProducts";
+import CategoriesSection from "../components/CategoriesSection";
+import AboutSection from "../components/AboutSection";
+import CertificationsSection from "../components/CertificationsSection";
+import ContactSection from "../components/ContactSection";
+import Footer from "../components/Footer";
 
 export default function Home() {
+  const [activeCategory, setActiveCategory] = useState("All");
+  const [selectedSpecimen, setSelectedSpecimen] = useState("");
+
   return (
-    <SiteLayout>
+    <div className="min-h-screen bg-ink text-white">
       <Helmet>
-        <title>ProBuySale — Digital books & resources by Ume Habiba</title>
+        <title>Artistic Fine Art — Rare Gems & Minerals from Pakistan</title>
         <meta
           name="description"
-          content="ProBuySale is a personal digital products store for Ume Habiba — digital books & resources for learning English, helping kids learn, and mastering coding."
+          content="Premium gems and minerals dealer — Tourmaline, Aquamarine, Emerald and rare collector specimens from Pakistan's finest mines. Natural, untreated, certified."
         />
       </Helmet>
 
-      <main>
-        <HeroDigitalProducts />
-
-        {/* Products */}
-        <Products variant="home" limit={8} />
-
-
-        {/* Categories */}
-        <Categories />
-
-        {/* About */}
-        <About />
-
-        {/* Testimonials */}
-        <Testimonials />
-
-        {/* Blog */}
-        <Blog />
-
-        {/* Contact */}
-        <Contact />
+      <Navbar />
+      <main className="space-y-16 px-6 pb-16 pt-28 lg:px-8">
+        <HeroSection />
+        <SignatureSpecimens />
+        <FeaturedProducts
+          activeCategory={activeCategory}
+          onCategoryChange={setActiveCategory}
+          onInquire={(name) => setSelectedSpecimen(name)}
+        />
+        <CategoriesSection onSelectCategory={setActiveCategory} />
+        <AboutSection />
+        <CertificationsSection />
+        <ContactSection initialSpecimen={selectedSpecimen} />
       </main>
-    </SiteLayout>
+      <Footer />
+    </div>
   );
 }
-
-
-

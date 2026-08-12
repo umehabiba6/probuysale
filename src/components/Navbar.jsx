@@ -1,126 +1,92 @@
-import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { useState } from "react";
+import { Menu, X, Share2 } from "lucide-react";
 
-const LINKS = [
-  { href: "/books", label: "Books" },
-  { href: "#about", label: "About" },
-  { href: "#blog", label: "Blog" },
-  { href: "#contact", label: "Contact" },
+const navLinks = [
+  { label: "Home", href: "#home" },
+  { label: "Collection", href: "#products" },
+  { label: "About", href: "#about" },
+  { label: "Contact", href: "#contact" },
 ];
 
-
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
-    <header
-      className={`fixed top-0 inset-x-0 z-50 transition-colors duration-300 ${
-        scrolled ? "bg-ink/95 backdrop-blur border-b border-white/10" : "bg-transparent"
-      }`}
-    >
-      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="#top" className="flex items-center gap-2 focus-ring rounded">
-          <img
-            src="/images/Copilot_20260619_164008.png"
-            alt="ProBuySale"
-            className="h-9 w-9 object-contain"
-          />
-          <span className="font-display font-semibold text-white text-lg tracking-tight">
-            ProBuySale
-            <span className="text-amber">&nbsp;</span>
-
+    <header className="fixed inset-x-0 top-0 z-50 bg-ink/95 border-b border-line backdrop-blur-md">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
+        <a href="#home" className="flex items-center gap-3 text-white">
+          <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-gold">
+            <span className="text-xl">💎</span>
           </span>
+          <div>
+            <p className="font-display text-lg font-semibold text-gold">Artistic Fine Art</p>
+            <p className="text-xs uppercase tracking-[0.35em] text-muted">Rare gems & minerals</p>
+          </div>
         </a>
 
-        <nav className="hidden md:flex items-center gap-8">
-          <a
-            href="/"
-            className="text-sm text-white/70 hover:text-white transition-colors focus-ring rounded"
-          >
-            Home
-          </a>
-
-          {LINKS.map((l) => (
+        <nav className="hidden items-center gap-8 lg:flex">
+          {navLinks.map((link) => (
             <a
-              key={l.href}
-              href={l.href}
-              className="text-sm text-white/70 hover:text-white transition-colors focus-ring rounded"
+              key={link.href}
+              href={link.href}
+              className="text-sm text-white transition hover:text-gold"
             >
-              {l.label}
+              {link.label}
             </a>
           ))}
-
-          <a
-            href="/hire-team"
-            className="text-sm text-white/70 hover:text-white transition-colors focus-ring rounded"
-          >
-            Hire a Team
-          </a>
-          <a
-            href="/books"
-            className="text-sm font-medium bg-cobalt hover:bg-cobalt-light text-white px-4 py-2 rounded-md transition-colors focus-ring"
-          >
-            Browse Books
-          </a>
-
         </nav>
 
+        <div className="hidden items-center gap-4 lg:flex">
+          <a
+            href="#contact"
+            className="rounded-full border border-gold px-5 py-2 text-sm font-medium text-gold transition hover:bg-gold hover:text-ink"
+          >
+            Inquire Now
+          </a>
+        </div>
 
         <button
-          className="md:hidden text-white focus-ring rounded p-1"
-          aria-label={open ? "Close menu" : "Open menu"}
-          onClick={() => setOpen((o) => !o)}
+          type="button"
+          className="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/5 p-2 text-white transition hover:bg-white/10 lg:hidden"
+          onClick={() => setOpen(!open)}
+          aria-label="Toggle navigation"
         >
-          {open ? <X size={22} /> : <Menu size={22} />}
+          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </div>
 
       {open && (
-        <div className="md:hidden bg-ink border-t border-white/10 px-6 py-4 flex flex-col gap-4">
-          <a
-            href="#top"
-            onClick={() => setOpen(false)}
-            className="text-white/80 text-sm"
-          >
-            Home
-          </a>
-          {LINKS.map((l) => (
+        <div className="border-t border-line bg-ink/98 lg:hidden">
+          <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-5">
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="text-base text-white transition hover:text-gold"
+                onClick={() => setOpen(false)}
+              >
+                {link.label}
+              </a>
+            ))}
             <a
-              key={l.href}
-              href={l.href}
+              href="#contact"
+              className="inline-flex w-full items-center justify-center rounded-full border border-gold bg-gold/10 px-4 py-3 text-sm font-medium text-gold transition hover:bg-gold hover:text-ink"
               onClick={() => setOpen(false)}
-              className="text-white/80 text-sm"
             >
-              {l.label}
+              Inquire Now
             </a>
-          ))}
-          <a
-            href="/hire-team"
-            onClick={() => setOpen(false)}
-            className="text-white/80 text-sm"
-          >
-            Hire a Team
-          </a>
-          <a
-            href="/books"
-            onClick={() => setOpen(false)}
-            className="text-sm font-medium bg-cobalt text-white px-4 py-2 rounded-md text-center"
-          >
-            Browse Books
-          </a>
-
+            <a
+              href="https://instagram.com/artistic_fine_minerals"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-3 text-sm text-white transition hover:bg-white/10"
+            >
+              <Instagram className="h-4 w-4" />
+              Instagram
+            </a>
+          </div>
         </div>
       )}
-
     </header>
   );
 }
-

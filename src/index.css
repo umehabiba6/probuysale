@@ -1,19 +1,16 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ink: #0b1320;
-  --color-navy: #0e2a52;
-  --color-navy-light: #16386b;
-  --color-cobalt: #2456db;
-  --color-cobalt-light: #4a74e8;
-  --color-amber: #ffb454;
-  --color-mist: #f7f9fc;
-  --color-slate: #5b6b82;
-  --color-line: #e2e8f1;
-
-  --font-display: "Space Grotesk", "Inter", sans-serif;
+  --color-ink: #0a0a0a;
+  --color-surface: #111111;
+  --color-surface-2: #1a1a1a;
+  --color-gold: #c9a84c;
+  --color-gold-light: #e8c96d;
+  --color-white: #f5f0e8;
+  --color-muted: #888888;
+  --color-line: #2a2a2a;
+  --font-display: "Playfair Display", serif;
   --font-body: "Inter", sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
 }
 
 html {
@@ -21,9 +18,17 @@ html {
 }
 
 body {
+  margin: 0;
+  min-height: 100vh;
   font-family: var(--font-body);
-  background-color: var(--color-mist);
-  color: var(--color-ink);
+  background-color: var(--color-ink);
+  color: var(--color-white);
+}
+
+a { color: inherit; }
+
+* {
+  box-sizing: border-box;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -37,83 +42,44 @@ body {
   }
 }
 
-/* signature terminal card */
-.term-card {
-  background: #0a1a33;
-  border: 1px solid rgba(74, 116, 232, 0.25);
-  border-radius: 12px;
-  box-shadow: 0 30px 60px -20px rgba(11, 19, 32, 0.55);
-}
-
-.term-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-}
-
-.caret {
-  display: inline-block;
-  width: 8px;
-  height: 1.1em;
-  background: var(--color-amber);
-  margin-left: 4px;
-  vertical-align: -2px;
-  animation: blink 1.1s steps(1) infinite;
-}
-
-@keyframes blink {
-  50% { opacity: 0; }
-}
-
 .focus-ring:focus-visible {
-  outline: 2px solid var(--color-amber);
+  outline: 2px solid var(--color-gold);
   outline-offset: 3px;
 }
 
 .form-input {
   width: 100%;
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 8px;
-  padding: 0.65rem 0.85rem;
-  font-size: 0.875rem;
-  transition: border-color 0.2s ease;
+  border-radius: 0.75rem;
+  padding: 0.85rem 1rem;
+  font-size: 0.95rem;
+  color: var(--color-white);
+  transition: border-color 0.2s ease, background-color 0.2s ease;
 }
 
-/* Default placeholder/input styling for form-input */
-/* Default placeholder/input styling for form-input */
 .form-input::placeholder {
-  /* keep component-level styling, but global placeholder override will enforce accessibility */
-  color: rgba(255, 255, 255, 0.35);
+  color: rgba(255, 255, 255, 0.4);
 }
-
-/* Signup requirement: placeholder should be black/ink on mist (light) background */
-.form-input-ink {
-  color: var(--color-ink);
-}
-
-.form-input-ink::placeholder {
-  color: rgba(11, 19, 32, 0.55);
-}
-
-
 
 .form-input:focus {
   outline: none;
-  border-color: var(--color-cobalt-light);
+  border-color: var(--color-gold);
+  background: rgba(255, 255, 255, 0.08);
 }
 
-.form-input option {
-  color: #0b1320;
+button,
+input,
+textarea,
+select {
+  font: inherit;
 }
 
-/* Global placeholder/text readability */
-::placeholder {
-  color: #5b6b82 !important;
-  opacity: 1 !important;
+button {
+  cursor: pointer;
 }
 
-input, textarea, select {
-  color: #0b1320 !important;
+::selection {
+  background: rgba(201, 168, 76, 0.25);
 }
 

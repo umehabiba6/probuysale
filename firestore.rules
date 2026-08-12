@@ -2,54 +2,28 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // Helper: check that the authenticated user is an admin
-    // Tries to find a document in /admins/{uid} OR /main/admins/{uid}
     function isAdmin() {
-      return request.auth != null && (
-        exists(/databases/$(database)/documents/admins/$(request.auth.uid)) ||
-        exists(/databases/$(database)/documents/main/admins/$(request.auth.uid))
-      );
+      return request.auth != null && exists(/databases/$(database)/documents/admins/$(request.auth.uid)) && get(/databases/$(database)/documents/admins/$(request.auth.uid)).data.role == 'admin';
     }
 
-    // Products: public read only for published, writes for admins
     match /products/{productId} {
-      allow read: if resource.data.status == "published" || request.auth != null;
+      allow read: if resource.data.status != "deleted";
       allow create, update, delete: if isAdmin();
     }
 
-    // Blog posts: public read only for published, writes for admins
-    match /blogPosts/{postId} {
-      allow read: if resource.data.status == "published" || request.auth != null;
-      allow create, update, delete: if isAdmin();
+    match /inquiries/{inquiryId} {
+      allow create: if true;
+      allow read, update: if isAdmin();
+      allow delete: if false;
     }
 
-    // Listings: admins can write
-    match /listings/{listingId} {
-      allow read: if request.auth != null;
-      allow create, update, delete: if isAdmin();
-    }
-
-    // Admins collection: readable by authenticated users, writable by admins
     match /admins/{adminId} {
-      allow read: if request.auth != null;
+      allow read: if isAdmin();
       allow write: if isAdmin();
     }
 
-    // Sellers, Conversations, etc: authenticated users can read, admins can write
-    match /sellers/{sellerId} {
-      allow read: if request.auth != null;
-      allow write: if isAdmin();
-    }
-
-    match /conversations/{conversationId} {
-      allow read: if request.auth != null;
-      allow write: if isAdmin();
-    }
-
-    // Default: deny all writes, allow authenticated reads
     match /{document=**} {
-      allow read: if request.auth != null;
-      allow write: if false;
+      allow read, write: if false;
     }
   }
 }

@@ -11,24 +11,20 @@ export default function AdminProtectedRoute({ children }) {
   useEffect(() => {
     let mounted = true;
 
-    const unsub = onAuthStateChanged(auth, async (u) => {
+    const unsub = onAuthStateChanged(auth, async (user) => {
       if (!mounted) return;
-
-      if (!u) {
+      if (!user) {
         setAllowed(false);
         setLoading(false);
         return;
       }
 
       try {
-        // Admin identity stored in: admins/{uid} with fields {uid, email, role: 'admin'}
-        const snap = await getDoc(doc(db, "admins", u.uid));
+        const snap = await getDoc(doc(db, "admins", user.uid));
         if (!mounted) return;
-
-        const data = snap.exists() ? snap.data() : null;
-        setAllowed(Boolean(data?.role === "admin"));
-      } catch (e) {
-        console.error(e);
+        setAllowed(snap.exists() && snap.data().role === "admin");
+      } catch (err) {
+        console.error(err);
         if (!mounted) return;
         setAllowed(false);
       } finally {
@@ -42,8 +38,12 @@ export default function AdminProtectedRoute({ children }) {
     };
   }, []);
 
-  if (loading) return <div className="pt-24 px-6 text-slate">Checking admin access…</div>;
-  if (!allowed) return <Navigate to="/admin/login" replace />;
+  if (loading) {
+    return <div className="pt-24 px-6 text-white">Checking admin access…</div>;
+  }
+  if (!allowed) {
+    return <Navigate to="/admin/login" replace />;
+  }
+
   return children;
 }
-
