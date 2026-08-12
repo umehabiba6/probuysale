@@ -1,4 +1,4 @@
-import { Gem, Droplet, Instagram, Star } from "lucide-react";
+import { Gem, Droplet, ExternalLink, Star } from "lucide-react";
 
 const categories = [
   {
@@ -37,7 +37,18 @@ export default function CategoriesSection({ onSelectCategory }) {
 
       <div className="mt-10 grid gap-6 lg:grid-cols-3">
         {categories.map((item) => (
-          <div key={item.title} className="group overflow-hidden rounded-[2rem] border border-white/10 bg-ink p-0 shadow-xl shadow-black/20">
+          <div
+            key={item.title}
+            role="button"
+            tabIndex={0}
+            onClick={() => onSelectCategory(item.category)}
+            onKeyDown={(event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                onSelectCategory(item.category);
+              }
+            }}
+            className="group cursor-pointer overflow-hidden rounded-[2rem] border border-white/10 bg-ink p-0 shadow-xl shadow-black/20 transition duration-300 hover:-translate-y-1 hover:border-gold/40"
+          >
             <div className="relative h-56 overflow-hidden rounded-t-[2rem] bg-slate-900">
               <img
                 src={item.image}
@@ -57,9 +68,9 @@ export default function CategoriesSection({ onSelectCategory }) {
                 href="https://instagram.com/artistic_fine_minerals"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gold px-5 py-3 text-sm font-semibold text-ink transition hover:bg-gold-light"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gold px-5 py-3 text-sm font-semibold text-ink transition duration-300 hover:bg-gold-light"
               >
-                <Instagram className="h-4 w-4" />
+                <ExternalLink className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                 View Collection
               </a>
             </div>
