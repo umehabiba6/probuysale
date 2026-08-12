@@ -14,7 +14,7 @@ const sampleProducts = [
     pricePKR: "45,000",
     priceUSD: "180",
     status: "Available",
-    coverImageUrl: "/images/specimens/royal-amethyst-cathedral.jpg",
+    coverImageUrl: "/images/OIP.webp",
     fallbackImageUrl:
       "https://images.unsplash.com/photo-1516822003754-cca485356ecb?auto=format&fit=crop&w=900&q=80",
   },
@@ -26,7 +26,7 @@ const sampleProducts = [
     pricePKR: "120,000",
     priceUSD: "480",
     status: "Available",
-    coverImageUrl: "/images/specimens/ocean-clear-aquamarine-tower.jpg",
+    coverImageUrl: "/images/OIP%20(1).webp",
     fallbackImageUrl:
       "https://images.unsplash.com/photo-1519741490076-0c673dacd9a2?auto=format&fit=crop&w=900&q=80",
   },
@@ -38,7 +38,7 @@ const sampleProducts = [
     pricePKR: "95,000",
     priceUSD: "380",
     status: "Available",
-    coverImageUrl: "/images/specimens/imperial-green-emerald-matrix.jpg",
+    coverImageUrl: "/images/OIP%20(2).webp",
     fallbackImageUrl:
       "https://images.unsplash.com/photo-1548092372-d3d01d9f7601?auto=format&fit=crop&w=900&q=80",
   },
@@ -50,7 +50,7 @@ const sampleProducts = [
     pricePKR: "75,000",
     priceUSD: "300",
     status: "Sold",
-    coverImageUrl: "/images/specimens/watermelon-tourmaline-slice.jpg",
+    coverImageUrl: "/images/OIP%20(3).webp",
     fallbackImageUrl:
       "https://images.unsplash.com/photo-1517039630-7f8b8cbfca16?auto=format&fit=crop&w=900&q=80",
   },
@@ -62,7 +62,7 @@ const sampleProducts = [
     pricePKR: "55,000",
     priceUSD: "220",
     status: "Available",
-    coverImageUrl: "/images/specimens/smoky-quartz-phantom-cluster.jpg",
+    coverImageUrl: "/images/OIP%20(4).webp",
     fallbackImageUrl:
       "https://images.unsplash.com/photo-1517904964774-3fba1aa72b1d?auto=format&fit=crop&w=900&q=80",
   },
@@ -74,7 +74,7 @@ const sampleProducts = [
     pricePKR: "65,000",
     priceUSD: "260",
     status: "Available",
-    coverImageUrl: "/images/specimens/collectors-fluorite-octahedron.jpg",
+    coverImageUrl: "/images/OIP%20(5).webp",
     fallbackImageUrl:
       "https://images.unsplash.com/photo-1516572113194-71e018c1f784?auto=format&fit=crop&w=900&q=80",
   },
@@ -186,7 +186,7 @@ export default function FeaturedProducts({ activeCategory, onCategoryChange, onI
       ) : (
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {filteredProducts.map((product) => (
-            <article key={product.id} className="group overflow-hidden rounded-[2rem] border border-line bg-ink p-4 transition hover:border-gold/40 sm:p-5">
+            <article key={product.id} className="group animate-fade-up overflow-hidden rounded-[2rem] border border-line bg-ink p-4 transition hover:border-gold/40 sm:p-5">
               <div className="relative overflow-hidden rounded-[1.75rem] bg-surface-2">
                 <img
                   src={product.coverImageUrl || "https://via.placeholder.com/640x640?text=Specimen"}

@@ -2,7 +2,16 @@ import { ShieldCheck, Award, Truck } from "lucide-react";
 
 export default function HeroSection() {
   return (
-    <section id="home" className="relative overflow-hidden pt-28 pb-24">
+    <section
+      id="home"
+      className="relative overflow-hidden pt-28 pb-24"
+      style={{
+        backgroundImage: 'url("/images/OIP%20(9).webp")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}
+    >
+      <div className="absolute inset-0 bg-black/70" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(201,168,76,0.2),_transparent_25%),radial-gradient(circle_at_center,_rgba(255,209,115,0.08),_transparent_20%)]" />
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
