@@ -1,4 +1,4 @@
-import { Gem, Droplet, Star } from "lucide-react";
+import { Gem, Droplet, Instagram, Star } from "lucide-react";
 
 const categories = [
   {
@@ -57,8 +57,9 @@ export default function CategoriesSection({ onSelectCategory }) {
                 href="https://instagram.com/artistic_fine_minerals"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex w-full items-center justify-center rounded-full bg-gold px-5 py-3 text-sm font-semibold text-ink transition hover:bg-gold-light"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gold px-5 py-3 text-sm font-semibold text-ink transition hover:bg-gold-light"
               >
+                <Instagram className="h-4 w-4" />
                 View Collection
               </a>
             </div>
